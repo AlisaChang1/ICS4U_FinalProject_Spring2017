@@ -11,7 +11,23 @@
     tools:context="com.example.alisa.quickcare.MainActivity">
 
     <TextView
+        android:text="There has been a drought in Indonesia. A child needs your help. Your job is to care for the child until the child is healthy enough to return to their family. Tap to continue..."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_marginTop="120dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_marginTop="129dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="22dp" />
 </RelativeLayout>
