@@ -21,9 +21,6 @@ public class BedActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         Intent i;
-        i = new Intent(this, BuyFoodActivity.class);
-        startActivity(i);
-
         i = new Intent(this, GameActivity.class);
         startActivity(i);
     }

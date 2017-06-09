@@ -12,18 +12,22 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        Button buttonFood = (Button)findViewById(R.id.buttonFood);
-        Button buttonPlay = (Button)findViewById(R.id.buttonPlay);
-        Button buttonBed = (Button)findViewById(R.id.buttonBed);
 
+        Button buttonFood = (Button)findViewById(R.id.buttonFood);
         buttonFood.setOnClickListener(this);
+
+        Button buttonPlay = (Button)findViewById(R.id.buttonPlay);
         buttonPlay.setOnClickListener(this);
+
+        Button buttonBed = (Button)findViewById(R.id.buttonBed);
         buttonBed.setOnClickListener(this);
+
     }
 
 
     @Override
     public void onClick(View v) {
+
         Intent i;
 
         i = new Intent(this, FoodActivity.class);
