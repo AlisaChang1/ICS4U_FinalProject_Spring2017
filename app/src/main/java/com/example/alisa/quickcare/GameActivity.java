@@ -15,6 +15,7 @@ public class GameActivity extends AppCompatActivity{
         Button buttonFood = (Button)findViewById(R.id.buttonFood);
         Button buttonPlay = (Button)findViewById(R.id.buttonPlay);
         Button buttonBed = (Button)findViewById(R.id.buttonBed);
+
         buttonFood.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
