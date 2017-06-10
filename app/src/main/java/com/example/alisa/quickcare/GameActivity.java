@@ -6,38 +6,55 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class GameActivity extends AppCompatActivity implements View.OnClickListener{
+public class GameActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
         Button buttonFood = (Button)findViewById(R.id.buttonFood);
-        buttonFood.setOnClickListener(this);
-
         Button buttonPlay = (Button)findViewById(R.id.buttonPlay);
-        buttonPlay.setOnClickListener(this);
-
         Button buttonBed = (Button)findViewById(R.id.buttonBed);
-        buttonBed.setOnClickListener(this);
+        buttonFood.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToFoodActivity();
+            }
+        });
+
+        buttonPlay.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToPlayActivity();
+            }
+        });
+
+        buttonBed.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToBedActivity();
+            }
+        });
+    }
+
+    private void goToFoodActivity()
+    {
+        Intent intent = new Intent(this, FoodActivity.class);
+        startActivity(intent);
 
     }
 
+    private void goToPlayActivity()
+    {
+        Intent intent = new Intent(this, PlayActivity.class);
+        startActivity(intent);
 
-    @Override
-    public void onClick(View v) {
+    }
 
-        Intent i;
-
-        i = new Intent(this, FoodActivity.class);
-        startActivity(i);
-
-        i = new Intent(this, PlayActivity.class);
-        startActivity(i);
-
-        i = new Intent(this, BedActivity.class);
-        startActivity(i);
+    private void goToBedActivity()
+    {
+        Intent intent = new Intent(this, BedActivity.class);
+        startActivity(intent);
 
     }
 }
