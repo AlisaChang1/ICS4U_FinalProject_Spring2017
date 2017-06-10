@@ -15,7 +15,7 @@ public class FoodOptionActivity extends AppCompatActivity {
 
         Button buttonBuyFood = (Button)findViewById(R.id.buttonBuyFood);
         Button buttonFeed = (Button)findViewById(R.id.buttonFeed);
-
+        Button buttonBack = (Button)findViewById(R.id.buttonBack6);
 
         buttonBuyFood.setOnClickListener (new View.OnClickListener() {
             @Override
@@ -30,6 +30,14 @@ public class FoodOptionActivity extends AppCompatActivity {
                 goToFeedActivity();
             }
         });
+
+        buttonBack.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               goToGameActivity();
+            }
+        });
+
     }
 
     private void goToFeedActivity()
@@ -41,6 +49,11 @@ public class FoodOptionActivity extends AppCompatActivity {
     private void goToBuyFoodActivity()
     {
         Intent intent = new Intent(this, BuyFoodActivity.class);
+        startActivity(intent);
+    }
+
+    private void goToGameActivity(){
+        Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }
 
