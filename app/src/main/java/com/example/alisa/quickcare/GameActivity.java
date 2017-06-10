@@ -40,9 +40,8 @@ public class GameActivity extends AppCompatActivity{
 
     private void goToFoodActivity()
     {
-        Intent intent = new Intent(this, FoodActivity.class);
+        Intent intent = new Intent(this, FoodOptionActivity.class);
         startActivity(intent);
-
     }
 
     private void goToPlayActivity()
