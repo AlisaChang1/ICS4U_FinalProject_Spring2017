@@ -10,18 +10,20 @@ import android.widget.TextView;
 public class PlayActivity extends AppCompatActivity implements View.OnClickListener{
 
     int cash = 100;
+    Account one;
+    TextView moneyCount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
         Button buttonJump = (Button)findViewById(R.id.buttonJump);
         Button buttonBack2 = (Button)findViewById(R.id.buttonBack2);
-        TextView moneyCount = (TextView)findViewById(R.id.moneyCount);
+        moneyCount = (TextView)findViewById(R.id.moneyCount);
 
         buttonJump.setOnClickListener(this);
         buttonBack2.setOnClickListener(this);
 
-        Account one = new Account(cash);
+        one = new Account(cash);
         moneyCount.setText("$: " + one.getCash());
 
 
@@ -30,8 +32,28 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        Intent i;
-        i = new Intent(this, GameActivity.class);
-        startActivity(i);
+        switch (v.getId()){
+            case R.id.buttonJump:
+                one.addOne();
+                updateMoney();
+                break;
+            case R.id.buttonBack2:
+                Intent intent = new Intent(this, GameActivity.class);
+                startActivity(intent);
+                onPause();
+                break;
+        }
     }
+
+    public void updateMoney () {
+        moneyCount.setText("$: " + one.getCash());
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+    }
+
+
+
 }
