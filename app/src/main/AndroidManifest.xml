@@ -20,7 +20,8 @@
         <activity android:name=".BedActivity" />
         <activity android:name=".PlayActivity" />
         <activity android:name=".BuyFoodActivity" />
-        <activity android:name=".FoodOptionActivity"></activity>
+        <activity android:name=".FoodOptionActivity" />
+        <activity android:name=".MoneyActivity"></activity>
     </application>
 
 </manifest>

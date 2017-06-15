@@ -5,9 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class FoodActivity extends AppCompatActivity{
 
+    int cash = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,11 +21,13 @@ public class FoodActivity extends AppCompatActivity{
         Button buttonFood3 = (Button)findViewById(R.id.buttonFood3);
         Button buttonFood4 = (Button)findViewById(R.id.buttonFood4);
         Button buttonBack3 = (Button)findViewById(R.id.buttonBack3);
+        TextView moneyCount = (TextView)findViewById(R.id.moneyCount);
 
-        /*buttonFood1.setOnClickListener(this);
-        buttonFood2.setOnClickListener(this);
-        buttonFood3.setOnClickListener(this);
-        buttonFood4.setOnClickListener(this);*/
+          Account one = new Account(cash);
+        moneyCount.setText("$: " + one.getCash());
+
+
+
         buttonBack3.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {

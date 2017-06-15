@@ -5,17 +5,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class BedActivity extends AppCompatActivity implements View.OnClickListener{
 
+    int cash = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bed);
         Button buttonLights = (Button)findViewById(R.id.buttonLights);
         Button buttonBack4 = (Button)findViewById(R.id.buttonBack4);
+        TextView moneyCount = (TextView)findViewById(R.id.moneyCount);
         buttonLights.setOnClickListener(this);
         buttonBack4.setOnClickListener(this);
+
+        Account one = new Account(cash);
+        moneyCount.setText("$: " + one.getCash());
     }
 
     @Override

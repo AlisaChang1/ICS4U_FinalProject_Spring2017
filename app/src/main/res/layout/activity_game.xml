@@ -16,7 +16,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/moneyCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -29,11 +29,13 @@
             android:text="$"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.935"
+            app:layout_constraintHorizontal_bias="0.93"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.014" />
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
 
         <Button
             android:id="@+id/buttonPlay"
@@ -57,8 +59,8 @@
             android:layout_alignBottom="@+id/buttonPlay"
             android:layout_marginEnd="6dp"
             android:layout_marginRight="6dp"
-            android:layout_toLeftOf="@+id/textView"
-            android:layout_toStartOf="@+id/textView"
+            android:layout_toLeftOf="@+id/moneyCount"
+            android:layout_toStartOf="@+id/moneyCount"
             android:text="Bedroom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.882"
@@ -80,12 +82,13 @@
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"
-            app:layout_constraintVertical_bias="0.846"
-            android:layout_marginRight="8dp"
+            app:layout_constraintVertical_bias="0.85"
+            android:layout_marginRight="25dp"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintHorizontal_bias="0.156" />
+            app:layout_constraintHorizontal_bias="0.13"
+            android:layout_marginStart="8dp" />
     </android.support.constraint.ConstraintLayout>
 
 </RelativeLayout>

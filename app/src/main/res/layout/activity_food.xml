@@ -32,9 +32,9 @@
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="17dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="23dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintVertical_bias="0.519" />
@@ -56,9 +56,10 @@
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="62dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.08" />
+            app:layout_constraintHorizontal_bias="0.08"
+            android:layout_marginStart="8dp" />
 
         <Button
             android:id="@+id/buttonBack3"
@@ -67,14 +68,13 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="11dp"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="16dp"
-            android:text="Back" />
+            android:text="Back"
+            tools:layout_editor_absoluteY="162dp"
+            tools:layout_editor_absoluteX="0dp" />
 
         <Button
             android:id="@+id/buttonFood1"
-            android:layout_width="86dp"
+            android:layout_width="88dp"
             android:layout_height="49dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
@@ -90,11 +90,12 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintHorizontal_bias="0.68"
             app:layout_constraintVertical_bias="0.652"
-            tools:layout_editor_absoluteY="338dp" />
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
 
         <Button
             android:id="@+id/buttonFood4"
-            android:layout_width="86dp"
+            android:layout_width="88dp"
             android:layout_height="49dp"
             android:layout_alignBaseline="@+id/buttonFood3"
             android:layout_alignBottom="@+id/buttonFood3"
@@ -110,7 +111,9 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.652" />
+            app:layout_constraintVertical_bias="0.652"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -131,11 +134,13 @@
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintHorizontal_bias="0.653"
-            app:layout_constraintVertical_bias="0.514" />
+            app:layout_constraintVertical_bias="0.514"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
 
         <Button
             android:id="@+id/buttonFood2"
-            android:layout_width="87dp"
+            android:layout_width="88dp"
             android:layout_height="49dp"
             android:layout_alignBaseline="@+id/buttonFood1"
             android:layout_alignBottom="@+id/buttonFood1"
@@ -151,7 +156,9 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.65" />
+            app:layout_constraintVertical_bias="0.65"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -170,16 +177,16 @@
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="76dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="85dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintHorizontal_bias="0.18"
             app:layout_constraintVertical_bias="0.516" />
 
         <Button
             android:id="@+id/buttonFood3"
-            android:layout_width="86dp"
+            android:layout_width="88dp"
             android:layout_height="49dp"
             android:layout_alignBaseline="@+id/buttonFood2"
             android:layout_alignBottom="@+id/buttonFood2"
@@ -195,7 +202,9 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.65" />
+            app:layout_constraintVertical_bias="0.65"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
 
         <TextView
             android:id="@+id/moneyCount"
@@ -211,8 +220,10 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="8dp"
-            app:layout_constraintHorizontal_bias="0.935"
-            app:layout_constraintVertical_bias="0.014" />
+            app:layout_constraintHorizontal_bias="0.93"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
     </android.support.constraint.ConstraintLayout>
 
 </RelativeLayout>
