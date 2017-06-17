@@ -9,37 +9,66 @@ import android.widget.TextView;
 
 import static android.R.attr.button;
 
-public class BuyFoodActivity extends AppCompatActivity {
+public class BuyFoodActivity extends AppCompatActivity implements View.OnClickListener{
 
     int cash = 100;
+    Account one = new Account(cash);
+    TextView moneyCount;
+    Button buttonRice, buttonCarrots, buttonCake, buttonChicken, buttonBack5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_food);
-        Button buttonChicken = (Button)findViewById(R.id.buttonChicken);
-        //buttonChicken.setOnClickListener(this);
-        Button buttonRice = (Button)findViewById(R.id.buttonRice);
-        Button buttonCarrots = (Button)findViewById(R.id.buttonCarrots);
-        Button buttonCake = (Button)findViewById(R.id.buttonCake);
-        Button buttonBack5 = (Button)findViewById(R.id.buttonBack5);
+        buttonChicken = (Button)findViewById(R.id.buttonChicken);
+        buttonRice = (Button)findViewById(R.id.buttonRice);
+        buttonCarrots = (Button)findViewById(R.id.buttonCarrots);
+        buttonCake = (Button)findViewById(R.id.buttonCake);
+        buttonBack5 = (Button)findViewById(R.id.buttonBack5);
 
-        TextView moneyCount = (TextView)findViewById(R.id.moneyCount);
+        buttonChicken.setOnClickListener(this);
+        buttonRice.setOnClickListener(this);
+        buttonCarrots.setOnClickListener(this);
+        buttonCake.setOnClickListener(this);
+        buttonBack5.setOnClickListener(this);
 
-        Account one = new Account(cash);
+        moneyCount = (TextView)findViewById(R.id.moneyCount);
+
         moneyCount.setText("$: " + one.getCash());
-
-        buttonBack5.setOnClickListener (new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToFoodOptionActivity();
-            }
-        });
     }
 
-    private void goToFoodOptionActivity(){
-        Intent intent = new Intent(this, FoodOptionActivity.class);
-        startActivity(intent);
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonRice:
+                one.buyRice();
+                updateMoney();
+                break;
+            case R.id.buttonCarrots:
+                one.buyCarrots();
+                updateMoney();
+                break;
+            case R.id.buttonCake:
+                one.buyCake();
+                updateMoney();
+                break;
+            case R.id.buttonChicken:
+                one.buyChicken();
+                updateMoney();
+                break;
+            case R.id.buttonBack5:
+                Intent intent = new Intent(this, GameActivity.class);
+                startActivity(intent);
+                onPause();
+                break;
+        }
     }
+
+    public void updateMoney () {
+        moneyCount.setText("$: " + one.getCash());
+    }
+
 
 
 
