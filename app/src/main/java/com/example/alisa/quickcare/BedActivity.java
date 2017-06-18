@@ -18,12 +18,8 @@ public class BedActivity extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_bed);
         Button buttonLights = (Button)findViewById(R.id.buttonLights);
         Button buttonBack4 = (Button)findViewById(R.id.buttonBack4);
-        TextView moneyCount = (TextView)findViewById(R.id.moneyCount);
         buttonLights.setOnClickListener(this);
         buttonBack4.setOnClickListener(this);
-
-        Account one = new Account(cash);
-        moneyCount.setText("$: " + one.getCash());
     }
 
     @Override

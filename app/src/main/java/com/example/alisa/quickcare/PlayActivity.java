@@ -41,8 +41,6 @@ public class PlayActivity extends AppCompatActivity {
         one = new Account(cash);
         moneyCount.setText(cashString + ":" + one.getCash());
 
-
-
         buttonJump.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {

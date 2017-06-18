@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import static android.R.attr.button;
 
-public class BuyFoodActivity extends AppCompatActivity implements View.OnClickListener{
+public class BuyFoodActivity extends AppCompatActivity{
 
     private int cash = 100;
     private String cashString;
@@ -44,53 +44,95 @@ public class BuyFoodActivity extends AppCompatActivity implements View.OnClickLi
         one = new Account(cash);
         moneyCount.setText(cashString + ":" + one.getCash());
 
-        buttonChicken.setOnClickListener(this);
-        buttonRice.setOnClickListener(this);
-        buttonCarrots.setOnClickListener(this);
-        buttonCake.setOnClickListener(this);
-        buttonBack5.setOnClickListener(this);
+        buttonRice.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buyRice();
+                SaveInt(key, cash);
+                updateMoney();
+                LoadInt();
+            }
+        });
+
+        buttonCarrots.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buyCarrots();
+                SaveInt(key, cash);
+                updateMoney();
+                LoadInt();
+            }
+        });
+
+        buttonCake.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buyCake();
+                SaveInt(key, cash);
+                updateMoney();
+                LoadInt();
+            }
+        });
+
+        buttonChicken.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buyChicken();
+                SaveInt(key, cash);
+                updateMoney();
+                LoadInt();
+            }
+        });
+
+        buttonBack5.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToFoodOptionActivity();
+            }
+        });
+
 
     }
 
-
-
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.buttonRice:
-                one.buyRice();
-                SaveInt(key, cash);
-                updateMoney();
-                LoadInt();
-                break;
-            case R.id.buttonCarrots:
-                one.buyCarrots();
-                SaveInt(key, cash);
-                updateMoney();
-                LoadInt();
-                break;
-            case R.id.buttonCake:
-                one.buyCake();
-                SaveInt(key, cash);
-                updateMoney();
-                LoadInt();
-                break;
-            case R.id.buttonChicken:
-                one.buyChicken();
-                SaveInt(key, cash);
-                updateMoney();
-                LoadInt();
-                break;
-            case R.id.buttonBack5:
-                Intent intent = new Intent(this, FoodOptionActivity.class);
-                startActivity(intent);
-                onPause();
-                break;
-        }
+    protected void onPause(){
+        super.onPause();
+        sharedPref.edit().putInt(cashString, cash).apply();
     }
 
     public void updateMoney () {
         moneyCount.setText("$: " + one.getCash());
+    }
+
+    public void buyCarrots(){
+        if(cash >= 10){
+            cash = cash - 10;
+        }
+
+    }
+
+    public void buyRice(){
+        if(cash >= 5) {
+            cash = cash - 5;
+        }
+    }
+
+    public void buyCake(){
+        if(cash >= 2){
+            cash = cash - 2;
+        }
+    }
+
+    public void buyChicken(){
+        if (cash >= 20){
+            cash = cash - 20;
+        }
+    }
+
+    private void goToFoodOptionActivity()
+    {
+        Intent intent = new Intent(this, FoodOptionActivity.class);
+        startActivity(intent);
     }
 
     public void SaveInt(String key, int value){

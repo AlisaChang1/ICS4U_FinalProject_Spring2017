@@ -16,33 +16,4 @@ public class Account {
         return cash;
     }
 
-    public void addOne(){
-        cash++;
-    }
-
-    public void buyCarrots(){
-        if(cash >= 10){
-            cash = cash - 10;
-        }
-
-    }
-
-    public void buyRice(){
-        if(cash >= 5) {
-            cash = cash - 5;
-        }
-    }
-
-    public void buyCake(){
-        if(cash >= 2){
-            cash = cash - 2;
-        }
-    }
-
-    public void buyChicken(){
-        if (cash >= 20){
-            cash = cash - 20;
-        }
-    }
-
 }
