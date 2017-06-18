@@ -61,7 +61,7 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
                 updateEnergy();
                 break;
             case R.id.buttonFood2:
-                energy.setEnergyChicken();
+                energy.setEnergyCarrots();
                 updateEnergy();
                 break;
             case R.id.buttonFood3:
