@@ -51,19 +51,8 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
 
         energyBar.setText("" + energy);
 
-
-
-//        buttonBack3.setOnClickListener (new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                goToFoodOptionActivity();
-//            }
-//        });
     }
-//    private void goToFoodOptionActivity(){
-//        Intent intent = new Intent(this, FoodOptionActivity.class);
-//        startActivity(intent);
-//    }
+
     @Override
     public void onClick(View v){
         switch (v.getId()){
@@ -71,8 +60,8 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
                 energy.setEnergyChicken();
                 updateEnergy();
                 break;
-            case R.id.buttonBack2:
-                energy.setEnergyCarrots();
+            case R.id.buttonFood2:
+                energy.setEnergyChicken();
                 updateEnergy();
                 break;
             case R.id.buttonFood3:
