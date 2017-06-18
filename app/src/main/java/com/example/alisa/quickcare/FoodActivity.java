@@ -39,6 +39,7 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
         buttonFood2.setOnClickListener(this);
         buttonFood3.setOnClickListener(this);
         buttonFood4.setOnClickListener(this);
+        buttonBack3.setOnClickListener(this);
 
 
         //Initialize the cash variables
@@ -83,10 +84,9 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
                 updateEnergy();
                 break;
             case R.id.buttonBack3:
-                Intent i = new Intent(this, PlayActivity.class);
+                Intent i = new Intent(this, FoodOptionActivity.class);
                 startActivity(i);
                 break;
-
         }
     }
 
@@ -94,13 +94,4 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
         energyBar.setText("" + energy.getEnergy());
     }
 
-    /*@Override
-    public void onClick(View v) {
-        Intent i;
-        i = new Intent(this, BuyFoodActivity.class);
-        startActivity(i);
-
-        i = new Intent(this, GameActivity.class);
-        startActivity(i);
-    }*/
 }
