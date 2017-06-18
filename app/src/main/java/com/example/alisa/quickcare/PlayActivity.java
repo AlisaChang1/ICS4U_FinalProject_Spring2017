@@ -43,7 +43,6 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonBack2:
                 Intent intent = new Intent(this, GameActivity.class);
                 startActivity(intent);
-                onPause();
                 break;
         }
     }
