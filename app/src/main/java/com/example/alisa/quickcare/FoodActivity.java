@@ -1,6 +1,7 @@
 package com.example.alisa.quickcare;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,10 +12,17 @@ import org.w3c.dom.Text;
 
 public class FoodActivity extends AppCompatActivity implements View.OnClickListener{
 
-    int cash = 100;
+    private int cash = 100;
+    private String cashString;
+    Account one;
+    private SharedPreferences sharedPref;
+    private static final String Prefs = "mySavedGameFile";
+
     EnergyBarActivity energy = new EnergyBarActivity();
     TextView energyBar;
+    TextView moneyCount;
     Button buttonFood1, buttonFood2, buttonFood3, buttonFood4, buttonBack3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +32,7 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
         buttonFood3 = (Button)findViewById(R.id.buttonFood3);
         buttonFood4 = (Button)findViewById(R.id.buttonFood4);
         buttonBack3 = (Button)findViewById(R.id.buttonBack3);
-        TextView moneyCount = (TextView)findViewById(R.id.moneyCount);
+        moneyCount = (TextView)findViewById(R.id.moneyCount);
         energyBar = (TextView)findViewById(R.id.energyBar);
 
         buttonFood1.setOnClickListener(this);
@@ -33,8 +41,12 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
         buttonFood4.setOnClickListener(this);
 
 
-        Account one = new Account(cash);
-        moneyCount.setText("$: " + one.getCash());
+        //Initialize the cash variables
+        sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
+        cashString = getString(R.string.money);
+        cash = sharedPref.getInt(cashString, 0);
+        one = new Account(cash);
+        moneyCount.setText(cashString + ":" + one.getCash());
 
         energyBar.setText("" + energy);
 

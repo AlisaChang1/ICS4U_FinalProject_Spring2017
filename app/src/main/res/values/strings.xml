@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">QuickCare</string>
+    <string name="money">$</string>
+
 </resources>
