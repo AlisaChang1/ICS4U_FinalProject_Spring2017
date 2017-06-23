@@ -19,8 +19,8 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
     private static final String Prefs = "mySavedGameFile";
 
     EnergyBarActivity energy = new EnergyBarActivity();
-    TextView energyBar;
-    TextView moneyCount;
+    BuyFoodActivity food = new BuyFoodActivity();
+    TextView energyBar, moneyCount, carrotNum, cakeNum, riceNum, chickenNum;
     Button buttonFood1, buttonFood2, buttonFood3, buttonFood4, buttonBack3;
 
     @Override
@@ -34,6 +34,10 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
         buttonBack3 = (Button)findViewById(R.id.buttonBack3);
         moneyCount = (TextView)findViewById(R.id.moneyCount);
         energyBar = (TextView)findViewById(R.id.energyBar);
+        carrotNum = (TextView)findViewById(R.id.carrotNum);
+        cakeNum = (TextView)findViewById(R.id.cakeNum);
+        riceNum = (TextView)findViewById(R.id.riceNum);
+        chickenNum = (TextView)findViewById(R.id.chickenNum);
 
         buttonFood1.setOnClickListener(this);
         buttonFood2.setOnClickListener(this);
@@ -47,9 +51,13 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
         cashString = getString(R.string.money);
         cash = sharedPref.getInt(cashString, 0);
         one = new Account(cash);
-        moneyCount.setText(cashString + ":" + one.getCash());
 
+        moneyCount.setText(cashString + ":" + one.getCash());
         energyBar.setText("" + energy);
+        carrotNum.setText("" + Integer.toString(food.buyCarrots()));
+        riceNum.setText("" + Integer.toString(food.buyRice()));
+        chickenNum.setText("" + Integer.toString(food.buyChicken()));
+        cakeNum.setText("" + Integer.toString(food.buyCake()));
 
     }
 
@@ -58,18 +66,22 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.buttonFood1:
                 energy.setEnergyChicken();
+                chickenNum.setText("" + food.feedChicken());
                 updateEnergy();
                 break;
             case R.id.buttonFood2:
                 energy.setEnergyCarrots();
+                carrotNum.setText("" + food.feedCarrots());
                 updateEnergy();
                 break;
             case R.id.buttonFood3:
                 energy.setEnergyRice();
+                riceNum.setText("" + food.feedRice());
                 updateEnergy();
                 break;
             case R.id.buttonFood4:
                 energy.setEnergyCake();
+                cakeNum.setText("" + food.feedCake());
                 updateEnergy();
                 break;
             case R.id.buttonBack3:

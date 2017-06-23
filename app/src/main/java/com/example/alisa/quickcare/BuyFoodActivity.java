@@ -21,6 +21,7 @@ public class BuyFoodActivity extends AppCompatActivity{
     //Static Variables
     private static final String key = "newCash";
     private static final String Prefs = "mySavedGameFile";
+    public int carrotCounter = 0, cakeCounter = 0, riceCounter = 0, chickenCounter = 0;
 
 
     //XML Variables
@@ -36,6 +37,7 @@ public class BuyFoodActivity extends AppCompatActivity{
         buttonCake = (Button)findViewById(R.id.buttonCake);
         buttonBack5 = (Button)findViewById(R.id.buttonBack5);
         moneyCount = (TextView)findViewById(R.id.moneyCount);
+
 
         //Initialize the cash variables
         sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
@@ -104,30 +106,83 @@ public class BuyFoodActivity extends AppCompatActivity{
         moneyCount.setText("$: " + one.getCash());
     }
 
-    public void buyCarrots(){
+    public int buyCarrots(){
         if(cash >= 10){
             cash = cash - 10;
+            carrotCounter++;
         }
+        return carrotCounter;
 
     }
 
-    public void buyRice(){
+    public int buyRice(){
         if(cash >= 5) {
             cash = cash - 5;
+            riceCounter++;
         }
+        return riceCounter;
     }
 
-    public void buyCake(){
+    public int buyCake(){
         if(cash >= 2){
             cash = cash - 2;
+            cakeCounter++;
         }
+        return cakeCounter;
     }
 
-    public void buyChicken(){
+    public int buyChicken(){
         if (cash >= 20){
             cash = cash - 20;
+            chickenCounter++;
         }
+        return chickenCounter;
     }
+
+    public int feedChicken(){
+        if (chickenCounter >= 1){
+            chickenCounter--;
+        }
+        return chickenCounter;
+    }
+
+    public int feedCake(){
+        if (cakeCounter >= 1){
+            cakeCounter--;
+        }
+        return cakeCounter;
+    }
+
+    public int feedRice(){
+        if (riceCounter >= 1){
+            riceCounter--;
+        }
+        return riceCounter;
+    }
+
+    public int feedCarrots(){
+        if (carrotCounter >= 1){
+            carrotCounter--;
+        }
+        return carrotCounter;
+    }
+
+//    public int getCarrots(){
+//        return carrotCounter;
+//    }
+//
+//    public int getCake(){
+//        return cakeCounter;
+//    }
+//
+//    public int getRice(){
+//        return riceCounter;
+//    }
+//
+//    public int getChicken(){
+//        return chickenCounter;
+//    }
+
 
     private void goToFoodOptionActivity()
     {

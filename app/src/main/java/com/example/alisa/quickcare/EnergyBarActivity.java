@@ -8,15 +8,34 @@ public class EnergyBarActivity {
 
     int energy;
 
-    public EnergyBarActivity(){energy = 100;}
+    public EnergyBarActivity(){energy = 0;}
 
     public int getEnergy() {return energy;}
 
-    public void setEnergyCake(){energy += 5;}
+    public void setEnergyCake() {
+        if (energy <= 95) {
+            energy += 5;
+        }
+    }
 
-    public void setEnergyCarrots() {energy += 10;}
+    public void setEnergyCarrots() {
+        if (energy <= 90) {
+            energy += 10;
+        }
+    }
 
-    public void setEnergyRice() {energy += 20;}
+    public void setEnergyRice() {
+        if (energy <= 80) {
+            energy += 20;
+        }
+    }
 
-    public void setEnergyChicken() {energy += 50;}
+    public void setEnergyChicken() {
+        if (energy <= 50) {
+            energy += 50;
+        }
+    }
+
+
+
 }
