@@ -37,8 +37,8 @@ public class BedActivity extends AppCompatActivity implements View.OnClickListen
                 startActivity(i);
                 break;
             case R.id.buttonLights:
-                rest.setSleep();
-                updateSleep();
+                    rest.setSleep();
+                    updateSleep();
 
         }
     }
