@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FinalProject Spring2017 (June 18).iml" filepath="$PROJECT_DIR$/FinalProject Spring2017 (June 18).iml" />
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/ICS4U_FinalProject_Spring2017.iml" filepath="$PROJECT_DIR$/ICS4U_FinalProject_Spring2017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ICS4U_FinalProject_Spring2017 (June 23, 2017) V2.iml" filepath="$PROJECT_DIR$/ICS4U_FinalProject_Spring2017 (June 23, 2017) V2.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/ICS4U_FinalProject_Spring2017 (June 22, 2017).iml" filepath="$PROJECT_DIR$/ICS4U_FinalProject_Spring2017 (June 22, 2017).iml" />
+>>>>>>> 07292d6fc544aa3132df25a12b6ff9a78d587071
+      <module fileurl="file://$PROJECT_DIR$/QuickCare2.iml" filepath="$PROJECT_DIR$/QuickCare2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>
