@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
@@ -47,6 +48,9 @@ public class GameActivity extends AppCompatActivity{
         one = new Account(cash);
         moneyCount.setText(cashString + ":" + one.getCash());
 
+        canvasAnimation = new CanvasAnimation(this);
+        setContentView(canvasAnimation);
+
         // need to convert the widget string to an int, than add the ints than convert them both back to an int
 
 
@@ -71,8 +75,6 @@ public class GameActivity extends AppCompatActivity{
                 goToBedActivity();
             }
         });
-
-        canvasAnimation.run();
     }
 
     private void goToFoodActivity()

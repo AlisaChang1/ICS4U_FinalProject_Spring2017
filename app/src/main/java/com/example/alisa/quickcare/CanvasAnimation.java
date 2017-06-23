@@ -1,7 +1,9 @@
 package com.example.alisa.quickcare;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -20,18 +22,18 @@ class CanvasAnimation extends SurfaceView implements Runnable {
     SurfaceHolder ourHolder;
     Paint paint;
     Bitmap bitmap;
+    volatile boolean CanDraw;
 
-    int canvasWidth;
-    int canvasHeight;
-
-    public CanvasAnimation (Context context, int canvas_Height, int canvas_Width) {
+    public CanvasAnimation (Context context) {
         super(context);
-        canvasWidth = canvas_Width;
-        canvasHeight = canvas_Height;
+        ourHolder = getHolder();
     }
 
+    @Override
     public void run() {
-        drawCourt();
+        while(CanDraw) {
+            drawCourt();
+        }
     }
 
     public void drawCourt() {
@@ -42,10 +44,7 @@ class CanvasAnimation extends SurfaceView implements Runnable {
 
             //Paint paint = new Paint();
             paint.setColor(Color.argb(255, 255, 255, 255));
-            paint.setTextSize(45);
             ourHolder.unlockCanvasAndPost(canvas);
         }
     }
-
-
 }
