@@ -9,8 +9,11 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,27 +21,49 @@ import android.widget.Toast;
 import static android.R.attr.bitmap;
 import static com.example.alisa.quickcare.R.id.moneyCount;
 
-public class GameActivity extends AppCompatActivity{
+public class GameActivity extends AppCompatActivity {
 
-    CanvasAnimation canvasAnimation;
 
     private int cash = 100;
     private String cashString;
     Account one;
     TextView moneyCount;
 
+
     private static final String Prefs = "mySavedGameFile";
     private static final String key = "newCash";
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
 
+    //attempt at canvas
+//    Display display;
+//    Point size;
+//    int screenWidth;
+//    int screenHeight;
+
+//    Button buttonAnimation;
+//
+//    //UI animation
+//    //our animation object
+//    Animation wobble;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+
+//        //animation
+//        wobble = AnimationUtm.wobble);
+//        ils.loadAnimation(this, R.ani
+        // attempt at canvas
+//        display = getWindowManager().getDefaultDisplay();
+//        display.getSize(size);
+//        screenWidth = size.x;
+//        screenHeight = size.y;
+
         Button buttonFood = (Button)findViewById(R.id.buttonFood);
         Button buttonPlay = (Button)findViewById(R.id.buttonPlay);
         Button buttonBed = (Button)findViewById(R.id.buttonBed);
+//        buttonAnimation = (Button)findViewById(R.id.buttonAnimation);
         moneyCount = (TextView)findViewById(R.id.moneyCount);
 
         //Initialize the cash variables
@@ -47,9 +72,11 @@ public class GameActivity extends AppCompatActivity{
         cash = sharedPref.getInt(cashString, 0);
         one = new Account(cash);
         moneyCount.setText(cashString + ":" + one.getCash());
+//        screenWidth = size.x;
+//        screenHeight = size.y;
 
-        canvasAnimation = new CanvasAnimation(this);
-        setContentView(canvasAnimation);
+//        canvasAnimation = new CanvasAnimation(this, screenWidth, screenHeight);
+//        canvasAnimation.run();
 
         // need to convert the widget string to an int, than add the ints than convert them both back to an int
 
@@ -75,6 +102,8 @@ public class GameActivity extends AppCompatActivity{
                 goToBedActivity();
             }
         });
+
+
     }
 
     private void goToFoodActivity()
@@ -98,4 +127,11 @@ public class GameActivity extends AppCompatActivity{
 
     }
 
+//    public void onClick(View v) {
+//        switch (v.getId()){
+//            case R.id.buttonAnimation:
+//                buttonAnimation.startAnimation(wobble);
+//                break;
+//        }
+//    }
 }

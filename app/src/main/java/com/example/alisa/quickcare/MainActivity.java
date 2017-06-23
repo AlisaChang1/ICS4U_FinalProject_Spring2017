@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
         Button buttonStart = (Button)findViewById(R.id.buttonStart);
         buttonStart.setOnClickListener(this);
         Button canvasButton = (Button)findViewById(R.id.canvasButton);
@@ -30,10 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.canvasButton:
-                Intent i = new Intent(this, CanvasAnimation.class);
-                startActivity(i);
-                break;
             case R.id.buttonStart:
                 Intent a = new Intent(this, GameActivity.class);
                 startActivity(a);
