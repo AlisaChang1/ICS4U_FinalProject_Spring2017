@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">QuickCare</string>
     <string name="money">$</string>
+    <string name="Energy">Energy</string>
+    <string name="buyRice">Rice</string>
+    <string name="buyCarrots">Carrots</string>
+    <string name="buyCake">Cake</string>
+    <string name="buyChicken">Chicken</string>
 
 </resources>

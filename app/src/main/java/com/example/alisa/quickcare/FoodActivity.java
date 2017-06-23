@@ -10,15 +10,60 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class FoodActivity extends AppCompatActivity implements View.OnClickListener{
+public class FoodActivity extends AppCompatActivity{
 
+    //Initialize private Variables
     private int cash = 100;
+    private int energyAmount = 0;
     private String cashString;
+    private String foodString;
+    public int carrotCounter = 0, cakeCounter = 0, riceCounter = 0, chickenCounter = 0;
     Account one;
+    RiceCounterActivity rice;
+    ChickenCounterActivity chicken;
+    CakeCounterActivity cake;
+    CarrotCounterActivity carrot;
+
+    //Initialize Static Variables For Money
     private SharedPreferences sharedPref;
     private static final String Prefs = "mySavedGameFile";
 
-    EnergyBarActivity energy = new EnergyBarActivity();
+    //Initialize Static Variables For Food.
+    private SharedPreferences sharedPref_Food;
+    private static final String key_Food = "newFood";
+    private static final String Prefs_food = "mySaveGameFileFood";
+    private SharedPreferences.Editor editor;
+
+    private String buyFoodString_Rice;
+    private String buyFoodString_Cake;
+    private String buyFoodString_Carrots;
+    private String buyFoodString_Chicken;
+
+
+    //SharedPreferences Variables for Food
+    private SharedPreferences sharedPref_BuyFoodChicken;
+    private SharedPreferences sharedPref_BuyFoodRice;
+    private SharedPreferences sharedPref_BuyFoodCarrot;
+    private SharedPreferences sharedPref_BuyFoodCake;
+    private SharedPreferences.Editor editor_buyRice;
+    private SharedPreferences.Editor editor_buyCarrot;
+    private SharedPreferences.Editor editor_buyCake;
+    private SharedPreferences.Editor editor_buyChicken;
+
+    //Static Variables for Food
+    private static final String key_Rice = "newCash";
+    private static final String key_Carrot = "newCash";
+    private static final String key_Cake = "newCash";
+    private static final String key_Chicken = "newCash";
+
+    //Static Variable for buyFood
+    private static final String Prefs_BuyRice = "mySavedGameFile_BuyRice";
+    private static final String Prefs_BuyCarrot = "mySavedGameFile_BuyCarrots";
+    private static final String Prefs_BuyCake = "mySavedGameFile_BuyCake";
+    private static final String Prefs_BuyChicken = "mySavedGameFile_BuyChicken";
+
+
+    EnergyBarActivity energy;
     BuyFoodActivity food = new BuyFoodActivity();
     TextView energyBar, moneyCount, carrotNum, cakeNum, riceNum, chickenNum;
     Button buttonFood1, buttonFood2, buttonFood3, buttonFood4, buttonBack3;
@@ -39,60 +84,233 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
         riceNum = (TextView)findViewById(R.id.riceNum);
         chickenNum = (TextView)findViewById(R.id.chickenNum);
 
-        buttonFood1.setOnClickListener(this);
-        buttonFood2.setOnClickListener(this);
-        buttonFood3.setOnClickListener(this);
-        buttonFood4.setOnClickListener(this);
-        buttonBack3.setOnClickListener(this);
-
-
-        //Initialize the cash variables
+        //Initialize the variables need to save information for money
         sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
         cashString = getString(R.string.money);
         cash = sharedPref.getInt(cashString, 0);
         one = new Account(cash);
-
         moneyCount.setText(cashString + ":" + one.getCash());
-        energyBar.setText("" + energy);
-        carrotNum.setText("" + Integer.toString(food.buyCarrots()));
-        riceNum.setText("" + Integer.toString(food.buyRice()));
-        chickenNum.setText("" + Integer.toString(food.buyChicken()));
-        cakeNum.setText("" + Integer.toString(food.buyCake()));
 
-    }
+        //Initialize the variables need to save information for food energy.
+        sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
+        foodString = getString(R.string.Energy);
+        energyAmount = sharedPref_Food.getInt(foodString, 0);
+        energy = new EnergyBarActivity(energyAmount);
+        energyBar.setText(foodString +": " + energy.getEnergy());
 
-    @Override
-    public void onClick(View v){
-        switch (v.getId()){
-            case R.id.buttonFood1:
-                energy.setEnergyChicken();
-                chickenNum.setText("" + food.feedChicken());
+        //Initialize the buyFood variables
+        sharedPref_BuyFoodRice = getSharedPreferences(Prefs_BuyRice, MODE_PRIVATE);
+        buyFoodString_Rice = getString(R.string.buyRice);
+        riceCounter = sharedPref_BuyFoodRice.getInt(buyFoodString_Rice, 0);
+        rice = new RiceCounterActivity(riceCounter);
+        riceNum.setText(buyFoodString_Rice + ": " + rice.getRiceCounter());
+
+
+        sharedPref_BuyFoodChicken = getSharedPreferences(Prefs_BuyChicken, MODE_PRIVATE);
+        buyFoodString_Chicken = getString(R.string.buyChicken);
+        chickenCounter = sharedPref_BuyFoodChicken.getInt(buyFoodString_Chicken, 0);
+        chicken = new ChickenCounterActivity(chickenCounter);
+        chickenNum.setText(buyFoodString_Chicken + ": " + chicken.getChickenCounter());
+
+
+        sharedPref_BuyFoodCake = getSharedPreferences(Prefs_BuyCake, MODE_PRIVATE);
+        buyFoodString_Cake = getString(R.string.buyCake);
+        cakeCounter = sharedPref_BuyFoodCake.getInt(buyFoodString_Cake, 0);
+        cake = new CakeCounterActivity(cakeCounter);
+        cakeNum.setText(buyFoodString_Cake + ": " + cake.getCakeCounter());
+
+
+        sharedPref_BuyFoodCarrot= getSharedPreferences(Prefs_BuyCarrot, MODE_PRIVATE);
+        buyFoodString_Carrots= getString(R.string.buyCarrots);
+        carrotCounter = sharedPref_BuyFoodCarrot.getInt(buyFoodString_Carrots, 0);
+        carrot = new CarrotCounterActivity(carrotCounter);
+        carrotNum.setText(buyFoodString_Carrots + ": " + carrot.getCarrotCounter());
+
+
+        buttonFood1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setEnergyChicken();
+                SaveChicken(key_Chicken, chickenCounter);
+                SaveIntFood(key_Food, energyAmount);
                 updateEnergy();
-                break;
-            case R.id.buttonFood2:
-                energy.setEnergyCarrots();
-                carrotNum.setText("" + food.feedCarrots());
+                updateFoodAmount();
+                LoadIntFood();
+                LoadChicken();
+            }
+        });
+
+        buttonFood2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setEnergyCarrots();
+                SaveCake(key_Carrot, carrotCounter);
+                SaveIntFood(key_Food, energyAmount);
                 updateEnergy();
-                break;
-            case R.id.buttonFood3:
-                energy.setEnergyRice();
-                riceNum.setText("" + food.feedRice());
+                updateFoodAmount();
+                LoadIntFood();
+                LoadCarrot();
+            }
+        });
+
+        buttonFood3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setEnergyRice();
+                SaveRice(key_Rice, riceCounter);
+                SaveIntFood(key_Food, energyAmount);
                 updateEnergy();
-                break;
-            case R.id.buttonFood4:
-                energy.setEnergyCake();
-                cakeNum.setText("" + food.feedCake());
+                updateFoodAmount();
+                LoadIntFood();
+                LoadRice();
+
+            }
+        });
+
+        buttonFood4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setEnergyCake();
+                SaveCake(key_Cake, cakeCounter);
+                SaveIntFood(key_Food, energyAmount);
                 updateEnergy();
-                break;
-            case R.id.buttonBack3:
-                Intent i = new Intent(this, FoodOptionActivity.class);
-                startActivity(i);
-                break;
-        }
+                updateFoodAmount();
+                LoadIntFood();
+                LoadCake();
+
+            }
+        });
+
+        buttonBack3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToFoodOptionActivity();
+            }
+        });
+
     }
 
     public void updateEnergy () {
         energyBar.setText("Energy: " + energy.getEnergy());
+    }
+
+    public void updateFoodAmount(){
+        riceNum.setText(buyFoodString_Rice + ": " + rice.getRiceCounter());
+        chickenNum.setText(buyFoodString_Chicken + ": " + chicken.getChickenCounter());
+        cakeNum.setText(buyFoodString_Cake + ": " + cake.getCakeCounter());
+        carrotNum.setText(buyFoodString_Carrots + ": " + carrot.getCarrotCounter());
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        sharedPref_Food.edit().putInt(foodString, energyAmount).apply();
+    }
+
+    private void goToFoodOptionActivity()
+    {
+
+        Intent intent = new Intent(this, FoodOptionActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void SaveIntFood(String key_Food, int value){
+        sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
+        editor = sharedPref_Food.edit();
+        editor.putInt(key_Food, energyAmount);
+        editor.apply();
+    }
+
+    public void LoadIntFood(){
+        SharedPreferences sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
+        energyAmount = sharedPref_Food.getInt(key_Food, 0);
+        energyBar.setText("Energy: " + String.valueOf(energyAmount));
+    }
+
+    public void SaveRice(String key, int value){
+        sharedPref_BuyFoodRice = getSharedPreferences(Prefs_BuyRice, MODE_PRIVATE);
+        editor_buyRice = sharedPref_BuyFoodRice.edit();
+        editor_buyRice.putInt(key_Rice, riceCounter);
+        editor_buyRice.apply();
+    }
+
+    public void SaveCarrot(String key, int value){
+        sharedPref_BuyFoodCarrot = getSharedPreferences(Prefs_BuyCarrot, MODE_PRIVATE);
+        editor_buyCarrot = sharedPref_BuyFoodCarrot.edit();
+        editor_buyCarrot.putInt(key_Carrot, carrotCounter);
+        editor_buyCarrot.apply();
+    }
+
+    public void SaveChicken(String key, int value){
+        sharedPref_BuyFoodChicken = getSharedPreferences(Prefs_BuyChicken, MODE_PRIVATE);
+        editor_buyChicken = sharedPref_BuyFoodChicken.edit();
+        editor_buyChicken.putInt(key_Chicken, chickenCounter);
+        editor_buyChicken.apply();
+    }
+
+    public void SaveCake(String key, int value){
+        sharedPref_BuyFoodCake = getSharedPreferences(Prefs_BuyCake, MODE_PRIVATE);
+        editor_buyCake = sharedPref_BuyFoodCake.edit();
+        editor_buyCake.putInt(key_Cake, cakeCounter);
+        editor_buyCake.apply();
+    }
+
+
+    public void LoadRice(){
+        SharedPreferences sharedPref_BuyFoodRice = getSharedPreferences(Prefs_BuyRice, MODE_PRIVATE);
+        riceCounter = sharedPref_BuyFoodRice.getInt(key_Rice, 0);
+        editor_buyRice.apply();
+    }
+
+    public void LoadCarrot(){
+        SharedPreferences sharedPref_BuyFoodCarrot = getSharedPreferences(Prefs_BuyCarrot, MODE_PRIVATE);
+        carrotCounter = sharedPref_BuyFoodCarrot.getInt(key_Carrot, 0);
+        editor_buyCarrot.apply();
+    }
+
+    public void LoadChicken(){
+        SharedPreferences sharedPref_BuyFoodChicken = getSharedPreferences(Prefs_BuyChicken, MODE_PRIVATE);
+        chickenCounter = sharedPref_BuyFoodChicken.getInt(key_Chicken, 0);
+        editor_buyChicken.apply();
+    }
+
+    public void LoadCake(){
+        SharedPreferences sharedPref_BuyFoodCake = getSharedPreferences(Prefs_BuyCake, MODE_PRIVATE);
+        cakeCounter = sharedPref_BuyFoodCake.getInt(key_Cake, 0);
+        editor_buyCake.apply();
+    }
+
+    public int setEnergyCake() {
+        if (energyAmount <= 95) {
+            cakeCounter --;
+            energyAmount += 5;
+        }
+        return cakeCounter;
+    }
+
+    public int setEnergyCarrots() {
+        if (energyAmount <= 90) {
+            energyAmount += 10;
+            carrotCounter = carrotCounter - 1;
+        }
+        return carrotCounter;
+    }
+
+    public int setEnergyRice() {
+        if (energyAmount <= 80) {
+            riceCounter --;
+            energyAmount += 20;
+        }
+        return riceCounter;
+    }
+
+    public int setEnergyChicken() {
+        if (energyAmount <= 50) {
+            chickenCounter --;
+            energyAmount += 50;
+        }
+        return chickenCounter;
     }
 
 }
