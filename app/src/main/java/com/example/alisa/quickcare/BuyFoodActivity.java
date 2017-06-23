@@ -16,6 +16,7 @@ public class BuyFoodActivity extends AppCompatActivity{
     private String cashString;
     Account one;
     private SharedPreferences sharedPref;
+    private SharedPreferences saveFood;
     private SharedPreferences.Editor editor;
 
     //Static Variables
@@ -166,22 +167,6 @@ public class BuyFoodActivity extends AppCompatActivity{
         }
         return carrotCounter;
     }
-
-//    public int getCarrots(){
-//        return carrotCounter;
-//    }
-//
-//    public int getCake(){
-//        return cakeCounter;
-//    }
-//
-//    public int getRice(){
-//        return riceCounter;
-//    }
-//
-//    public int getChicken(){
-//        return chickenCounter;
-//    }
 
 
     private void goToFoodOptionActivity()
