@@ -12,6 +12,9 @@ import org.w3c.dom.Text;
 public class BedActivity extends AppCompatActivity implements View.OnClickListener{
 
     int cash = 100;
+    TextView textSleep;
+    SleepBarActivity rest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,12 +23,26 @@ public class BedActivity extends AppCompatActivity implements View.OnClickListen
         Button buttonBack4 = (Button)findViewById(R.id.buttonBack4);
         buttonLights.setOnClickListener(this);
         buttonBack4.setOnClickListener(this);
+
+        textSleep = (TextView)findViewById(R.id.textSleep);
+        rest = new SleepBarActivity();
     }
 
     @Override
     public void onClick(View v) {
-        Intent i;
-        i = new Intent(this, GameActivity.class);
-        startActivity(i);
+        switch (v.getId()) {
+            case R.id.buttonBack4:
+                Intent i;
+                i = new Intent(this, GameActivity.class);
+                startActivity(i);
+                break;
+            case R.id.buttonLights:
+                rest.setSleep();
+                updateSleep();
+
+        }
+    }
+    public void updateSleep () {
+        textSleep.setText("Sleep: : " + rest.getSleep());
     }
 }

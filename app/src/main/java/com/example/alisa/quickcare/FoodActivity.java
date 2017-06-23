@@ -92,7 +92,7 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void updateEnergy () {
-        energyBar.setText("" + energy.getEnergy());
+        energyBar.setText("Energy: " + energy.getEnergy());
     }
 
 }
