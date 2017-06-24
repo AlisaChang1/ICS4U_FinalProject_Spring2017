@@ -102,9 +102,13 @@ public class BedActivity extends AppCompatActivity {
                 LoadSleep();
 
                 //animation frames update
-                current_image++;
-                current_image=current_image % images.length;
-                sleepingguy.setImageResource(images[current_image]);
+//                if (rest.getSleep() < 50) {
+                    current_image++;
+                    current_image = current_image % images.length;
+                    sleepingguy.setImageResource(images[current_image]);
+//                } else if (rest.getSleep() >= 50){
+//                    current_image = R.drawable.armsdown;
+//                }
             }
         });
 
@@ -138,7 +142,6 @@ public class BedActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
-
     }
 
     public void SaveSleep(String key_sleep, int value){
