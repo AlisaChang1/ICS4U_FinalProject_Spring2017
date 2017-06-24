@@ -95,6 +95,7 @@ public class PlayActivity extends AppCompatActivity {
         energy = new EnergyBarActivity(energyAmount);
         energyBar.setText(foodString +": " + energy.getEnergy());
         final Button buttonOneTime = (Button)findViewById(R.id.buttonOneTime);
+
         buttonOneTime.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,15 +123,14 @@ public class PlayActivity extends AppCompatActivity {
             }
         });
 
-        buttonOneTime.setOnClickListener (new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                energyAmount = 100;
-                buttonOneTime.setEnabled(false);
-            }
-        });
     }
 
+    /**
+     *OnPause Method which makes sure that the activity is paused not destoryed
+     * </P>
+     * The code in the onPause method is to insure that the information is saved
+     * When the activity is paused.
+     */
     @Override
     protected void onPause(){
         super.onPause();
@@ -139,11 +139,16 @@ public class PlayActivity extends AppCompatActivity {
         sharedPref_Food.edit().putInt(foodString, energyAmount).apply();
     }
 
-
+    /**
+     *update Method will update the textView in order to make sure that it has the latest values.
+     */
     public void updateMoney () {
         moneyCount.setText("$: " + one.getCash());
     }
 
+    /**
+     *gotoGameActivity method will change the activity to GameActivity once the buttonBack2 is clicked
+     */
     private void goToGameActivity()
     {
 
@@ -151,7 +156,10 @@ public class PlayActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-
+    /**
+     *workOut method has all of the necessary code to make sure that all the values increase when
+     * the button Workout is clicked, save the values, update the textview and load the values.
+     */
     public void workOut() {
         if (sleep >= 2 && energyAmount >= 3) {
             cash++;
@@ -174,17 +182,13 @@ public class PlayActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveInt(String key, int value){
         sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
         editor = sharedPref.edit();
         editor.putInt(key, cash);
-        editor.apply();
-    }
-
-    public void LoadInt(){
-        SharedPreferences sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
-        cash = sharedPref.getInt(key , 0);
-        moneyCount.setText("$: " + String.valueOf(cash));
         editor.apply();
     }
 
@@ -195,6 +199,24 @@ public class PlayActivity extends AppCompatActivity {
         editor_sleep.apply();
     }
 
+    public void SaveIntFood(String key_Food, int value){
+        sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
+        editor_Energy = sharedPref_Food.edit();
+        editor_Energy.putInt(key_Food, energyAmount);
+        editor_Energy.apply();
+    }
+
+
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
+    public void LoadInt(){
+        SharedPreferences sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
+        cash = sharedPref.getInt(key , 0);
+        moneyCount.setText("$: " + String.valueOf(cash));
+        editor.apply();
+    }
+
     public void LoadSleep(){
         SharedPreferences sharedPref_sleep = getSharedPreferences(Prefs_sleep, MODE_PRIVATE);
         sleep = sharedPref_sleep.getInt(key_sleep, 0);
@@ -202,18 +224,6 @@ public class PlayActivity extends AppCompatActivity {
         editor_sleep.apply();
     }
 
-    public void subtractSleep(){
-        if(sleep >= 2){
-            sleep -= 2;
-        }
-    }
-
-    public void SaveIntFood(String key_Food, int value){
-        sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
-        editor_Energy = sharedPref_Food.edit();
-        editor_Energy.putInt(key_Food, energyAmount);
-        editor_Energy.apply();
-    }
 
     public void LoadIntFood(){
         SharedPreferences sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
@@ -222,12 +232,25 @@ public class PlayActivity extends AppCompatActivity {
         editor_Energy.apply();
     }
 
+
+    /**
+     *Subtract methods essentially subtract the energy and sleep amount when called.
+     */
     public void subtractEnergy(){
         if(energyAmount >= 0){
             energyAmount -= 4;
         }
     }
 
+    public void subtractSleep(){
+        if(sleep >= 2){
+            sleep -= 2;
+        }
+    }
+
+    /**
+     *buttonClick method will register when certain buttons are clicked
+     */
     public void buttonClick () {
         workoutguy = (ImageView)findViewById((R.id.preworkoutman));
         buttonJump1=(Button)findViewById((R.id.buttonJump));

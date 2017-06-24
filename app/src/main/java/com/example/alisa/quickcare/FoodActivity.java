@@ -169,7 +169,7 @@ public class FoodActivity extends AppCompatActivity{
                 SaveIntFood(key_Food, energyAmount);
                 SaveChicken(key_Chicken, chickenCounter);
                 updateEnergy();
-                //updateFoodAmount();
+                updateFoodAmount();
                 LoadIntFood();
                 LoadChicken();
 
@@ -187,7 +187,7 @@ public class FoodActivity extends AppCompatActivity{
                 SaveIntFood(key_Food, energyAmount);
                 SaveCarrot(key_Carrot, carrotCounter);
                 updateEnergy();
-                //updateFoodAmount();
+                updateFoodAmount();
                 LoadIntFood();
                 LoadCarrot();
             }
@@ -200,7 +200,7 @@ public class FoodActivity extends AppCompatActivity{
                 SaveIntFood(key_Food, energyAmount);
                 SaveRice(key_Rice, riceCounter);
                 updateEnergy();
-                //updateFoodAmount();
+                updateFoodAmount();
                 LoadIntFood();
                 LoadRice();
             }
@@ -213,7 +213,7 @@ public class FoodActivity extends AppCompatActivity{
                 SaveIntFood(key_Food, energyAmount);
                 SaveCake(key_Cake, cakeCounter);
                 updateEnergy();
-                //updateFoodAmount();
+                updateFoodAmount();
                 LoadIntFood();
                 LoadCake();
             }
@@ -232,13 +232,19 @@ public class FoodActivity extends AppCompatActivity{
         energyBar.setText(foodString +": " + energy.getEnergy());
     }
 
-    /*public void updateFoodAmount(){
+    public void updateFoodAmount(){
         riceNum.setText(buyFoodString_Rice + ": " + rice.getRiceCounter());
         chickenNum.setText(buyFoodString_Chicken + ": " + chicken.getChickenCounter());
         cakeNum.setText(buyFoodString_Cake + ": " + cake.getCakeCounter());
         carrotNum.setText(buyFoodString_Carrots + ": " + carrot.getCarrotCounter());
-    }*/
+    }
 
+    /**
+     *OnPause Method which makes sure that the activity is paused not destoryed
+     * </P>
+     * The code in the onPause method is to insure that the information is saved
+     * When the activity is paused.
+     */
     @Override
     protected void onPause(){
         super.onPause();
@@ -249,6 +255,9 @@ public class FoodActivity extends AppCompatActivity{
         sharedPref_BuyFoodChicken.edit().putInt(buyFoodString_Chicken, chickenCounter).apply();
     }
 
+    /**
+     *gotoFoodActivity will change to FoodOptionActivity once the buttonBack3 is clicked
+     */
     private void goToFoodOptionActivity()
     {
 
@@ -257,6 +266,9 @@ public class FoodActivity extends AppCompatActivity{
 
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveIntFood(String key_Food, int value){
         sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
         editor = sharedPref_Food.edit();
@@ -299,6 +311,9 @@ public class FoodActivity extends AppCompatActivity{
         editor_buyCake.apply();
     }
 
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void LoadRice(){
         SharedPreferences sharedPref_BuyFoodRice = getSharedPreferences(Prefs_BuyRice, MODE_PRIVATE);
         riceCounter = sharedPref_BuyFoodRice.getInt(key_Rice, 0);
@@ -363,6 +378,9 @@ public class FoodActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     *buttonClick method will register when certain buttons are clicked
+     */
     public void buttonClick () {
         hungryguy = (ImageView)findViewById((R.id.imageView10));
         buttonCake=(Button)findViewById((R.id.buttonFood4));

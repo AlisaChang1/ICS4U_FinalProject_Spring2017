@@ -201,6 +201,12 @@ public class BuyFoodActivity extends AppCompatActivity{
 
     }
 
+    /**
+     *OnPause Method which makes sure that the activity is paused not destoryed
+     * </P>
+     * The code in the onPause method is to insure that the information is saved
+     * When the activity is paused.
+     */
     @Override
     protected void onPause(){
         super.onPause();
@@ -212,6 +218,9 @@ public class BuyFoodActivity extends AppCompatActivity{
 
     }
 
+    /**
+     *update Method will update the textView in order to make sure that it has the latest values.
+     */
     public void updateMoney () {
         moneyCount.setText("$: " + one.getCash());
     }
@@ -249,13 +258,18 @@ public class BuyFoodActivity extends AppCompatActivity{
         return chickenCounter;
     }
 
-
+    /**
+     *gotoFoodActivity method will change the activity to FoodOptionActivity once the buttonBack4 is clicked
+     */
     private void goToFoodOptionActivity()
     {
         Intent intent = new Intent(this, FoodOptionActivity.class);
         startActivity(intent);
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveInt(String key, int value){
         sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
         sharedPref_BuyFoodCake = getSharedPreferences(Prefs_BuyCake, MODE_PRIVATE);
@@ -293,6 +307,9 @@ public class BuyFoodActivity extends AppCompatActivity{
         editor_buyCake.apply();
     }
 
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void LoadInt(){
         SharedPreferences sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
         cash = sharedPref.getInt(key , 0);

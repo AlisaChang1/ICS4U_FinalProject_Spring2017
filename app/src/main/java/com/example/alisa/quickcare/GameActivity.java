@@ -115,12 +115,19 @@ public class GameActivity extends AppCompatActivity{
         });
     }
 
+    /**
+     *gotoFoodActivity method will change the activity to FoodOptionActivity once the buttonBack4 is clicked
+     */
     private void goToFoodActivity()
     {
         Intent intent = new Intent(this, FoodOptionActivity.class);
         startActivity(intent);
     }
 
+
+    /**
+     *gotoPlayActivity method will change the activity to PlayActivity once the buttonPLay is clicked
+     */
     private void goToPlayActivity()
     {
 
@@ -128,7 +135,9 @@ public class GameActivity extends AppCompatActivity{
         startActivity(intent);
 
     }
-
+    /**
+     *gotoBedActivity method will change the activity to BedActivity once the buttonBed is clicked
+     */
     private void goToBedActivity()
     {
         Intent intent = new Intent(this, BedActivity.class);
@@ -136,6 +145,10 @@ public class GameActivity extends AppCompatActivity{
 
     }
 
+    /**
+     *changeImage method is so that when the energyAmount and the sleep amount are at a certain level
+     * the image will be changed.
+     */
     private void changeImage (){
         if (energyAmount > 80 && sleep > 80) {
             current_image = current_image + 2;

@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FinalProject Spring2017.iml" filepath="$PROJECT_DIR$/FinalProject Spring2017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FinalProject_Spring2017 (June 24, 2017 - Final Copy).iml" filepath="$PROJECT_DIR$/FinalProject_Spring2017 (June 24, 2017 - Final Copy).iml" />
       <module fileurl="file://$PROJECT_DIR$/ICS4U_FinalProject_Spring2017(5).iml" filepath="$PROJECT_DIR$/ICS4U_FinalProject_Spring2017(5).iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

@@ -5,14 +5,18 @@ package com.example.alisa.quickcare;
  */
 
 public class RiceCounterActivity {
-    private int carrotCounter;
+    private int riceCounter;
 
-    public RiceCounterActivity(int carrotCounter_1)
+    public RiceCounterActivity(int riceCounter_1)
     {
-        carrotCounter = carrotCounter_1;
+        riceCounter = riceCounter_1;
     }
 
+    /**
+     * Getter method for getRiceCounter, Returns the value of riceCounter
+     * @return
+     */
     public int getRiceCounter(){
-        return carrotCounter;
+        return riceCounter;
     }
 }

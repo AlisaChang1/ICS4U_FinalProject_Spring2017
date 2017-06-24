@@ -121,13 +121,20 @@ public class BedActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     *OnPause Method which makes sure that the activity is paused not destoryed
+     * </P>
+     * The code in the onPause method is to insure that the information is saved
+     * When the activity is paused.
+     */
     @Override
     protected void onPause(){
         super.onPause();
         sharedPref_sleep.edit().putInt(sleepString, sleep).apply();
     }
-
+    /**
+     *update Method will update the textView in order to make sure that it has the latest values.
+     */
     public void updateSleep () {
         textSleep.setText(sleepString + ": " + rest.getSleep());
     }
@@ -138,6 +145,9 @@ public class BedActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *gotoGameActivity method will change the activity to GameActivity once the buttonBack2 is clicked
+     */
     private void goToGameActivity()
     {
 
@@ -146,6 +156,9 @@ public class BedActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *SaveSleep method will save the variables related to sleep and store them to be used for later.
+     */
     public void SaveSleep(String key_sleep, int value){
         sharedPref_sleep = getSharedPreferences(Prefs_sleep, MODE_PRIVATE);
         editor_sleep = sharedPref_sleep.edit();
@@ -153,6 +166,9 @@ public class BedActivity extends AppCompatActivity {
         editor_sleep.apply();
     }
 
+    /**
+     *LoadSleep method will Load the variables related to sleep
+     */
     public void LoadSleep(){
         SharedPreferences sharedPref_sleep = getSharedPreferences(Prefs_sleep, MODE_PRIVATE);
         sleep = sharedPref_sleep.getInt(key_sleep, 0);
@@ -160,6 +176,9 @@ public class BedActivity extends AppCompatActivity {
         editor_sleep.apply();
     }
 
+    /**
+     *buttonClick method will register if a button within the method is clicked.
+     */
     public void buttonClick () {
         sleepingguy = (ImageView)findViewById((R.id.armnsdownman));
         buttonLight=(Button)findViewById((R.id.buttonLights));

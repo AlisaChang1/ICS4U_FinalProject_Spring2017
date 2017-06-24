@@ -91,19 +91,26 @@ public class FoodOptionActivity extends AppCompatActivity {
         });
 
     }
-
+    /**
+     *gotoFeedActivity will change the activity to the FoodActivity once the Food button is clicked
+     */
     private void goToFeedActivity()
     {
         Intent intent = new Intent(this, FoodActivity.class);
         startActivity(intent);
     }
-
+    /**
+     *goToBuyFoodActivity will change to BuyFoodActivity once the buttonBuyFood is clicked
+     */
     private void goToBuyFoodActivity()
     {
         Intent intent = new Intent(this, BuyFoodActivity.class);
         startActivity(intent);
     }
 
+    /**
+     *gotoGameActivity will change the GameActivity once the buttonBack is clicked
+     */
     private void goToGameActivity(){
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
