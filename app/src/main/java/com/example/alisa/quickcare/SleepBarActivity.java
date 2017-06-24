@@ -6,16 +6,9 @@ package com.example.alisa.quickcare;
 
 public class SleepBarActivity {
     public int sleep;
-    public SleepBarActivity(){
-        sleep = 0;
-    }
 
-    public void setSleep(){
-        sleep += 5;
-    }
-
-    public void setExercise(){
-        sleep--;
+    public SleepBarActivity(int sleep_1){
+        sleep = sleep_1;
     }
 
     public int getSleep(){

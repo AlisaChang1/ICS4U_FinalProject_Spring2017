@@ -15,4 +15,5 @@ public class CarrotCounterActivity {
     public int getCarrotCounter(){
         return carrotCounter;
     }
+
 }

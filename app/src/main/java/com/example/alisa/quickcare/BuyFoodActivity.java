@@ -12,15 +12,26 @@ import static android.R.attr.button;
 
 public class BuyFoodActivity extends AppCompatActivity{
 
+    //Initializes Variables
+    //Int Variables
     private int cash = 100;
+    int sleep = 0;
+    private int energyAmount = 0;
     public int carrotCounter = 0, cakeCounter = 0, riceCounter = 0, chickenCounter = 0;
+
     Account one;
     RiceCounterActivity rice;
+    SleepBarActivity rest;
+    EnergyBarActivity energy;
     ChickenCounterActivity chicken;
     CakeCounterActivity cake;
     CarrotCounterActivity carrot;
 
+
+    //String Variables
     private String cashString;
+    private String sleepString;
+    private String foodString;
     private String buyFoodString_Rice;
     private String buyFoodString_Cake;
     private String buyFoodString_Carrots;
@@ -47,6 +58,18 @@ public class BuyFoodActivity extends AppCompatActivity{
     private static final String key_Chicken = "newCash";
     private static final String Prefs = "mySavedGameFile";
 
+
+    //Static Variables
+    //Static Variables save files for Sleep bar:
+    private static final String Prefs_sleep = "mySavedGameFile_sleep";
+    private SharedPreferences sharedPref_sleep;
+
+
+    //Static Variables save files for Energy Bar:
+    private SharedPreferences sharedPref_Food;
+    private static final String Prefs_food = "mySaveGameFileFood";
+
+
     //Static Variable for buyFood
     private static final String Prefs_BuyRice = "mySavedGameFile_BuyRice";
     private static final String Prefs_BuyCarrot = "mySavedGameFile_BuyCarrots";
@@ -55,7 +78,10 @@ public class BuyFoodActivity extends AppCompatActivity{
 
 
     //XML Variables
+    //Textview Variables
     TextView moneyCount;
+    TextView textSleep;
+    TextView energyBar;
     Button buttonRice, buttonCarrots, buttonCake, buttonChicken, buttonBack5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +93,23 @@ public class BuyFoodActivity extends AppCompatActivity{
         buttonCake = (Button)findViewById(R.id.buttonCake);
         buttonBack5 = (Button)findViewById(R.id.buttonBack5);
         moneyCount = (TextView)findViewById(R.id.moneyCount);
+        textSleep = (TextView)findViewById(R.id.textSleep);
+        energyBar = (TextView)findViewById(R.id.energyBar);
 
+
+        //Initialize the variables need to save information for food energy.
+        sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
+        foodString = getString(R.string.Energy);
+        energyAmount = sharedPref_Food.getInt(foodString, 0);
+        energy = new EnergyBarActivity(energyAmount);
+        energyBar.setText(foodString +": " + energy.getEnergy());
+
+        //Initialize the sleep save variables
+        sharedPref_sleep = getSharedPreferences(Prefs_sleep, MODE_PRIVATE);
+        sleepString = getString(R.string.Sleep);
+        sleep = sharedPref_sleep.getInt(sleepString, 0);
+        rest = new SleepBarActivity(sleep);
+        textSleep.setText(sleepString + ": " + rest.getSleep());
 
         //Initialize the cash variables
         sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
@@ -94,9 +136,11 @@ public class BuyFoodActivity extends AppCompatActivity{
         cakeCounter = sharedPref_BuyFoodCake.getInt(buyFoodString_Cake, 0);
         cake = new CakeCounterActivity(cakeCounter);
 
+
+
         sharedPref_BuyFoodCarrot= getSharedPreferences(Prefs_BuyCarrot, MODE_PRIVATE);
         buyFoodString_Carrots= getString(R.string.buyCarrots);
-        chickenCounter = sharedPref_BuyFoodChicken.getInt(buyFoodString_Chicken, 0);
+        carrotCounter = sharedPref_BuyFoodCarrot.getInt(buyFoodString_Carrots, 0);
         carrot = new CarrotCounterActivity(carrotCounter);
 
         buttonRice.setOnClickListener (new View.OnClickListener() {
@@ -203,34 +247,6 @@ public class BuyFoodActivity extends AppCompatActivity{
             chickenCounter++;
         }
         return chickenCounter;
-    }
-
-    public int feedChicken(){
-        if (chickenCounter >= 1){
-            chickenCounter--;
-        }
-        return chickenCounter;
-    }
-
-    public int feedCake(){
-        if (cakeCounter >= 1){
-            cakeCounter--;
-        }
-        return cakeCounter;
-    }
-
-    public int feedRice(){
-        if (riceCounter >= 1){
-            riceCounter--;
-        }
-        return riceCounter;
-    }
-
-    public int feedCarrots(){
-        if (carrotCounter >= 1){
-            carrotCounter--;
-        }
-        return carrotCounter;
     }
 
 

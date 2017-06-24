@@ -15,4 +15,5 @@ public class CakeCounterActivity {
     public int getCakeCounter(){
         return cakeCounter;
     }
+
 }
