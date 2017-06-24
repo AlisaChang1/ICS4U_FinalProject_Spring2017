@@ -99,6 +99,21 @@ public class PlayActivity extends AppCompatActivity {
                 goToGameActivity();
             }
         });
+
+        final Button buttonOneTime = (Button)findViewById(R.id.buttonOneTime);
+        buttonJump.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                workOut();
+            }
+        });
+        buttonOneTime.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                energyAmount = 100;
+                buttonOneTime.setEnabled(false);
+            }
+        });
     }
 
     @Override

@@ -102,6 +102,14 @@
             android:layout_marginTop="56dp"
             app:layout_constraintHorizontal_bias="0.945" />
 
+        <Button
+            android:id="@+id/buttonOneTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="One Time Energy Boost"
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="402dp" />
+
 
     </android.support.constraint.ConstraintLayout>
 
