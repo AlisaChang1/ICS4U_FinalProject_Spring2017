@@ -89,20 +89,7 @@ public class PlayActivity extends AppCompatActivity {
         buttonJump.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(sleep >= 2 && energyAmount >= 3){
-                    cash ++;
-                    subtractSleep();
-                    subtractEnergy();
-                    SaveInt(key, cash);
-                    SaveSleep(key_sleep, sleep);
-                    SaveIntFood(key_Food, energyAmount);
-                    updateMoney();
-                    LoadInt();
-                    LoadSleep();
-                    LoadIntFood();
-                }else{
-                    Toast.makeText(getApplicationContext(), "You don't have enough energy or sleep to continue! ", Toast.LENGTH_SHORT).show();
-                }
+                workOut();
             }
         });
 
@@ -128,6 +115,23 @@ public class PlayActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
 
+    }
+
+    public void workOut(){
+        if(sleep >= 2 && energyAmount >= 3){
+            cash ++;
+            subtractSleep();
+            subtractEnergy();
+            SaveInt(key, cash);
+            SaveSleep(key_sleep, sleep);
+            SaveIntFood(key_Food, energyAmount);
+            updateMoney();
+            LoadInt();
+            LoadSleep();
+            LoadIntFood();
+        }else{
+            Toast.makeText(getApplicationContext(), "You don't have enough energy or sleep to continue! ", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void updateMoney () {

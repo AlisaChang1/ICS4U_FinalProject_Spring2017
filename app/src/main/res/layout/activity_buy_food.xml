@@ -49,18 +49,18 @@
             android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/buttonChicken"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Carrots"
+            android:text="Carrots (10-)"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.73"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.83"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
+            app:layout_constraintVertical_bias="0.83" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -94,18 +94,18 @@
             android:layout_alignLeft="@+id/buttonRice"
             android:layout_alignStart="@+id/buttonRice"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Cake"
+            android:text="Cake (2-)"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.16"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.42000002"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
+            app:layout_constraintVertical_bias="0.42000002" />
 
         <Button
             android:id="@+id/buttonBack5"
@@ -182,38 +182,38 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/buttonChicken"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="45dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="45dp"
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/buttonChicken"
             android:layout_toRightOf="@+id/buttonChicken"
-            android:text="Rice"
+            android:text="Rice (5-)"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.663"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.421"
-            android:layout_marginEnd="8dp" />
+            app:layout_constraintVertical_bias="0.421" />
 
         <Button
             android:id="@+id/buttonChicken"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chicken"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"
-            app:layout_constraintHorizontal_bias="0.163"
-            app:layout_constraintVertical_bias="0.832"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginTop="8dp"
+            android:text="Chicken (20-)"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.163"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.832" />
 
         <TextView
             android:id="@+id/moneyCount"

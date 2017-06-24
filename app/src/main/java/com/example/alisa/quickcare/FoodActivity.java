@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -153,10 +154,10 @@ public class FoodActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 setEnergyChicken();
-                SaveChicken(key_Chicken, chickenCounter);
                 SaveIntFood(key_Food, energyAmount);
+                SaveChicken(key_Chicken, chickenCounter);
                 updateEnergy();
-                updateFoodAmount();
+                //updateFoodAmount();
                 LoadIntFood();
                 LoadChicken();
             }
@@ -166,10 +167,10 @@ public class FoodActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 setEnergyCarrots();
-                SaveCarrot(key_Carrot, carrotCounter);
                 SaveIntFood(key_Food, energyAmount);
+                SaveCarrot(key_Carrot, carrotCounter);
                 updateEnergy();
-                updateFoodAmount();
+                //updateFoodAmount();
                 LoadIntFood();
                 LoadCarrot();
             }
@@ -179,13 +180,12 @@ public class FoodActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 setEnergyRice();
-                SaveRice(key_Rice, riceCounter);
                 SaveIntFood(key_Food, energyAmount);
+                SaveRice(key_Rice, riceCounter);
                 updateEnergy();
-                updateFoodAmount();
+                //updateFoodAmount();
                 LoadIntFood();
                 LoadRice();
-
             }
         });
 
@@ -193,13 +193,12 @@ public class FoodActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 setEnergyCake();
-                SaveCake(key_Cake, cakeCounter);
                 SaveIntFood(key_Food, energyAmount);
+                SaveCake(key_Cake, cakeCounter);
                 updateEnergy();
-                updateFoodAmount();
+                //updateFoodAmount();
                 LoadIntFood();
                 LoadCake();
-
             }
         });
 
@@ -216,12 +215,12 @@ public class FoodActivity extends AppCompatActivity{
         energyBar.setText(foodString +": " + energy.getEnergy());
     }
 
-    public void updateFoodAmount(){
+    /*public void updateFoodAmount(){
         riceNum.setText(buyFoodString_Rice + ": " + rice.getRiceCounter());
         chickenNum.setText(buyFoodString_Chicken + ": " + chicken.getChickenCounter());
         cakeNum.setText(buyFoodString_Cake + ": " + cake.getCakeCounter());
         carrotNum.setText(buyFoodString_Carrots + ": " + carrot.getCarrotCounter());
-    }
+    }*/
 
     @Override
     protected void onPause(){
@@ -315,6 +314,8 @@ public class FoodActivity extends AppCompatActivity{
         if (energyAmount <= 95 && cakeCounter > 0) {
             cakeCounter--;
             energyAmount += 5;
+        }else if (cakeCounter == 0){
+            Toast.makeText(getApplicationContext(), "You have no more food of this type!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -322,6 +323,8 @@ public class FoodActivity extends AppCompatActivity{
         if (energyAmount <= 90 && carrotCounter > 0) {
             carrotCounter--;
             energyAmount += 10;
+        }else if (carrotCounter == 0){
+            Toast.makeText(getApplicationContext(), "You have no more food of this type!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -329,6 +332,8 @@ public class FoodActivity extends AppCompatActivity{
         if (energyAmount <= 80 && riceCounter > 0) {
             riceCounter--;
             energyAmount += 20;
+        }else if (riceCounter == 0){
+            Toast.makeText(getApplicationContext(), "You have no more food of this type!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -336,6 +341,8 @@ public class FoodActivity extends AppCompatActivity{
         if (energyAmount <= 50 && chickenCounter > 0) {
             chickenCounter--;
             energyAmount += 50;
+        }else if (chickenCounter == 0){
+            Toast.makeText(getApplicationContext(), "You have no more food of this type!", Toast.LENGTH_SHORT).show();
         }
     }
 
