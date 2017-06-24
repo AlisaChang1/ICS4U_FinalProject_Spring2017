@@ -23,7 +23,7 @@ public class PlayActivity extends AppCompatActivity {
     private String sleepString;
     private String foodString;
 
-    //Textview Variables
+    //TextView Variables
     TextView moneyCount;
     TextView textSleep;
     TextView energyBar;
@@ -53,6 +53,8 @@ public class PlayActivity extends AppCompatActivity {
     private SharedPreferences sharedPref_Food;
     private static final String key_Food = "newFood";
     private static final String Prefs_food = "mySaveGameFileFood";
+    private SharedPreferences.Editor editor_Energy;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,13 +67,12 @@ public class PlayActivity extends AppCompatActivity {
         textSleep = (TextView)findViewById(R.id.textSleep);
         energyBar = (TextView)findViewById(R.id.energyBar);
 
-
-        //Initialize the variables need to save information for food energy.
-        sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
-        foodString = getString(R.string.Energy);
-        energyAmount = sharedPref_Food.getInt(foodString, 0);
-        energy = new EnergyBarActivity(energyAmount);
-        energyBar.setText(foodString +": " + energy.getEnergy());
+        //Initialize the cash variables
+        sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
+        cashString = getString(R.string.money);
+        cash = sharedPref.getInt(cashString, 0);
+        one = new Account(cash);
+        moneyCount.setText(cashString + ":" + one.getCash());
 
         //Initialize the sleep save variables
         sharedPref_sleep = getSharedPreferences(Prefs_sleep, MODE_PRIVATE);
@@ -80,12 +81,23 @@ public class PlayActivity extends AppCompatActivity {
         rest = new SleepBarActivity(sleep);
         textSleep.setText(sleepString + ": " + rest.getSleep());
 
-        //Initialize the cash variables
-        sharedPref = getSharedPreferences(Prefs, MODE_PRIVATE);
-        cashString = getString(R.string.money);
-        cash = sharedPref.getInt(cashString, 0);
-        one = new Account(cash);
-        moneyCount.setText(cashString + ":" + one.getCash());
+        //Initialize the variables need to save information for food energy.
+        sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
+        foodString = getString(R.string.Energy);
+        energyAmount = sharedPref_Food.getInt(foodString, 0);
+        energy = new EnergyBarActivity(energyAmount);
+        energyBar.setText(foodString +": " + energy.getEnergy());
+        final Button buttonOneTime = (Button)findViewById(R.id.buttonOneTime);
+        buttonOneTime.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                energyAmount = 100;
+                SaveInt(key, cash);
+                LoadInt();
+                energyBar.setText("Energy: " + String.valueOf(energyAmount));
+                buttonOneTime.setEnabled(false);
+            }
+        });
 
 
         buttonBack2.setOnClickListener (new View.OnClickListener() {
@@ -95,13 +107,13 @@ public class PlayActivity extends AppCompatActivity {
             }
         });
 
-        final Button buttonOneTime = (Button)findViewById(R.id.buttonOneTime);
         buttonJump.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 workOut();
             }
         });
+
         buttonOneTime.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,6 +131,11 @@ public class PlayActivity extends AppCompatActivity {
         sharedPref_Food.edit().putInt(foodString, energyAmount).apply();
     }
 
+
+    public void updateMoney () {
+        moneyCount.setText("$: " + one.getCash());
+    }
+
     private void goToGameActivity()
     {
 
@@ -127,9 +144,9 @@ public class PlayActivity extends AppCompatActivity {
 
     }
 
-    public void workOut(){
-        if(sleep >= 2 && energyAmount >= 3){
-            cash ++;
+    public void workOut() {
+        if (sleep >= 2 && energyAmount >= 3) {
+            cash++;
             subtractSleep();
             subtractEnergy();
             SaveInt(key, cash);
@@ -139,13 +156,9 @@ public class PlayActivity extends AppCompatActivity {
             LoadInt();
             LoadSleep();
             LoadIntFood();
-        }else{
+        } else {
             Toast.makeText(getApplicationContext(), "You don't have enough energy or sleep to continue! ", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public void updateMoney () {
-        moneyCount.setText("$: " + one.getCash());
     }
 
     public void SaveInt(String key, int value){
@@ -182,23 +195,23 @@ public class PlayActivity extends AppCompatActivity {
         }
     }
 
-    public void subtractEnergy(){
-        if(energyAmount >= 0){
-            energyAmount -= 4;
-        }
-    }
-
     public void SaveIntFood(String key_Food, int value){
-        sharedPref = getSharedPreferences(Prefs_food, MODE_PRIVATE);
-        editor = sharedPref_Food.edit();
-        editor.putInt(key_Food, energyAmount);
-        editor.apply();
+        sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
+        editor_Energy = sharedPref_Food.edit();
+        editor_Energy.putInt(key_Food, energyAmount);
+        editor_Energy.apply();
     }
 
     public void LoadIntFood(){
         SharedPreferences sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
         energyAmount = sharedPref_Food.getInt(key_Food, 0);
         energyBar.setText("Energy: " + String.valueOf(energyAmount));
+        editor_Energy.apply();
     }
 
+    public void subtractEnergy(){
+        if(energyAmount >= 0){
+            energyAmount -= 4;
+        }
+    }
 }
