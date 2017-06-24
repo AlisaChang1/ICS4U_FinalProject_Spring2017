@@ -205,32 +205,44 @@ public class BuyFoodActivity extends AppCompatActivity{
         return chickenCounter;
     }
 
-    public int feedChicken(){
+    public void feedChicken(){
         if (chickenCounter >= 1){
             chickenCounter--;
         }
-        return chickenCounter;
     }
 
-    public int feedCake(){
+    public void feedCake(){
         if (cakeCounter >= 1){
             cakeCounter--;
         }
-        return cakeCounter;
     }
 
-    public int feedRice(){
+    public void feedRice(){
         if (riceCounter >= 1){
             riceCounter--;
         }
-        return riceCounter;
     }
 
-    public int feedCarrots(){
+    public void feedCarrots(){
         if (carrotCounter >= 1){
             carrotCounter--;
         }
+    }
+
+    public int getChicken(){
+        return chickenCounter;
+    }
+
+    public int getCarrots(){
         return carrotCounter;
+    }
+
+    public int getRice(){
+        return riceCounter;
+    }
+
+    public int getCake(){
+        return cakeCounter;
     }
 
 

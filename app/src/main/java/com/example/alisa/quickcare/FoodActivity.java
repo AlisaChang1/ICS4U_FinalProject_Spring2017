@@ -103,28 +103,28 @@ public class FoodActivity extends AppCompatActivity{
         buyFoodString_Rice = getString(R.string.buyRice);
         riceCounter = sharedPref_BuyFoodRice.getInt(buyFoodString_Rice, 0);
         rice = new RiceCounterActivity(riceCounter);
-        riceNum.setText(buyFoodString_Rice + ": " + rice.getRiceCounter());
+        riceNum.setText(buyFoodString_Rice + ": " + food.buyRice());
 
 
         sharedPref_BuyFoodChicken = getSharedPreferences(Prefs_BuyChicken, MODE_PRIVATE);
         buyFoodString_Chicken = getString(R.string.buyChicken);
         chickenCounter = sharedPref_BuyFoodChicken.getInt(buyFoodString_Chicken, 0);
         chicken = new ChickenCounterActivity(chickenCounter);
-        chickenNum.setText(buyFoodString_Chicken + ": " + chicken.getChickenCounter());
+        chickenNum.setText(buyFoodString_Chicken + ": " + food.buyChicken());
 
 
         sharedPref_BuyFoodCake = getSharedPreferences(Prefs_BuyCake, MODE_PRIVATE);
         buyFoodString_Cake = getString(R.string.buyCake);
         cakeCounter = sharedPref_BuyFoodCake.getInt(buyFoodString_Cake, 0);
         cake = new CakeCounterActivity(cakeCounter);
-        cakeNum.setText(buyFoodString_Cake + ": " + cake.getCakeCounter());
+        cakeNum.setText(buyFoodString_Cake + ": " + food.buyCake());
 
 
         sharedPref_BuyFoodCarrot= getSharedPreferences(Prefs_BuyCarrot, MODE_PRIVATE);
         buyFoodString_Carrots= getString(R.string.buyCarrots);
         carrotCounter = sharedPref_BuyFoodCarrot.getInt(buyFoodString_Carrots, 0);
         carrot = new CarrotCounterActivity(carrotCounter);
-        carrotNum.setText(buyFoodString_Carrots + ": " + carrot.getCarrotCounter());
+        carrotNum.setText(buyFoodString_Carrots + ": " + food.buyCarrots());
 
 
         buttonFood1.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +137,8 @@ public class FoodActivity extends AppCompatActivity{
                 updateFoodAmount();
                 LoadIntFood();
                 LoadChicken();
+                food.buyChicken();
+                food.feedChicken();
             }
         });
 
@@ -144,12 +146,14 @@ public class FoodActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 setEnergyCarrots();
-                SaveCake(key_Carrot, carrotCounter);
+                SaveCarrot(key_Carrot, carrotCounter);
                 SaveIntFood(key_Food, energyAmount);
                 updateEnergy();
                 updateFoodAmount();
                 LoadIntFood();
                 LoadCarrot();
+                food.buyCarrots();
+                food.feedCarrots();
             }
         });
 
@@ -163,6 +167,8 @@ public class FoodActivity extends AppCompatActivity{
                 updateFoodAmount();
                 LoadIntFood();
                 LoadRice();
+                food.buyRice();
+                food.feedRice();
 
             }
         });
@@ -177,6 +183,8 @@ public class FoodActivity extends AppCompatActivity{
                 updateFoodAmount();
                 LoadIntFood();
                 LoadCake();
+                food.buyCake();
+                food.feedCake();
 
             }
         });
@@ -195,10 +203,10 @@ public class FoodActivity extends AppCompatActivity{
     }
 
     public void updateFoodAmount(){
-        riceNum.setText(buyFoodString_Rice + ": " + rice.getRiceCounter());
-        chickenNum.setText(buyFoodString_Chicken + ": " + chicken.getChickenCounter());
-        cakeNum.setText(buyFoodString_Cake + ": " + cake.getCakeCounter());
-        carrotNum.setText(buyFoodString_Carrots + ": " + carrot.getCarrotCounter());
+        riceNum.setText(buyFoodString_Rice + ": " + food.getRice());
+        chickenNum.setText(buyFoodString_Chicken + ": " + food.getChicken());
+        cakeNum.setText(buyFoodString_Cake + ": " + food.getCake());
+        carrotNum.setText(buyFoodString_Carrots + ": " + food.getCarrots());
     }
 
     @Override
@@ -281,36 +289,36 @@ public class FoodActivity extends AppCompatActivity{
         editor_buyCake.apply();
     }
 
-    public int setEnergyCake() {
+    public void setEnergyCake() {
         if (energyAmount <= 95) {
-            cakeCounter --;
             energyAmount += 5;
+//            cakeCounter --;
         }
-        return cakeCounter;
+//        return cakeCounter;
     }
 
-    public int setEnergyCarrots() {
+    public void setEnergyCarrots() {
         if (energyAmount <= 90) {
             energyAmount += 10;
-            carrotCounter = carrotCounter - 1;
+//            carrotCounter--;
         }
-        return carrotCounter;
+//        return carrotCounter;
     }
 
-    public int setEnergyRice() {
+    public void setEnergyRice() {
         if (energyAmount <= 80) {
-            riceCounter --;
             energyAmount += 20;
+//            riceCounter --;
         }
-        return riceCounter;
+//        return riceCounter;
     }
 
-    public int setEnergyChicken() {
+    public void setEnergyChicken() {
         if (energyAmount <= 50) {
-            chickenCounter --;
             energyAmount += 50;
+//            chickenCounter --;
         }
-        return chickenCounter;
+//        return chickenCounter;
     }
 
 }
