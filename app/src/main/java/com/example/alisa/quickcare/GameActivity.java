@@ -29,7 +29,6 @@ public class GameActivity extends AppCompatActivity {
     Account one;
     TextView moneyCount;
 
-
     private static final String Prefs = "mySavedGameFile";
     private static final String key = "newCash";
     private SharedPreferences sharedPref;
@@ -126,12 +125,4 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-
-//    public void onClick(View v) {
-//        switch (v.getId()){
-//            case R.id.buttonAnimation:
-//                buttonAnimation.startAnimation(wobble);
-//                break;
-//        }
-//    }
 }

@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageView;
+
+import static com.example.alisa.quickcare.R.drawable.preworkout;
 
 public class PlayActivity extends AppCompatActivity {
 
@@ -17,7 +20,6 @@ public class PlayActivity extends AppCompatActivity {
     private String cashString;
     Account one;
     TextView moneyCount;
-
 
     //Static Variables
     private static final String Prefs = "mySavedGameFile";
@@ -29,6 +31,9 @@ public class PlayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
+//
+//        ImageView myImageView = (ImageView) findViewById(R.id.workout1);
+
         //Links variables with elements in the xml files.
         Button buttonJump = (Button)findViewById(R.id.buttonJump);
         Button buttonBack2 = (Button)findViewById(R.id.buttonBack2);
@@ -48,6 +53,7 @@ public class PlayActivity extends AppCompatActivity {
                 SaveInt(key, cash);
                 updateMoney();
                 LoadInt();
+//                animation();
             }
         });
 
@@ -69,12 +75,9 @@ public class PlayActivity extends AppCompatActivity {
         moneyCount.setText("$: " + one.getCash());
     }
 
-    private void goToGameActivity()
-    {
-
+    private void goToGameActivity() {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
-
     }
 
     public void SaveInt(String key, int value){
@@ -90,4 +93,11 @@ public class PlayActivity extends AppCompatActivity {
         moneyCount.setText("$: " + String.valueOf(cash));
         editor.apply();
     }
+
+//    public void animation () {
+//        View v = findViewById(R.id.workout1);
+//        v.setVisibility(View.VISIBLE);
+//
+//    }
+
 }

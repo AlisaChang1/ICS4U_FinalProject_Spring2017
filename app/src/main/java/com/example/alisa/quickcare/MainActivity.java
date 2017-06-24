@@ -9,21 +9,12 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    MediaPlayer backgroundMusic;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Button buttonStart = (Button)findViewById(R.id.buttonStart);
         buttonStart.setOnClickListener(this);
-        Button canvasButton = (Button)findViewById(R.id.canvasButton);
-        canvasButton.setOnClickListener(this);
-
-        //Play background music
-        backgroundMusic = MediaPlayer.create(MainActivity.this, R.raw.sound1);
-        backgroundMusic.setLooping(true);
-        backgroundMusic.start();
     }
 
 
