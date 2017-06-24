@@ -102,6 +102,16 @@
             android:layout_marginTop="56dp"
             app:layout_constraintHorizontal_bias="0.945" />
 
+        <ImageView
+            android:id="@+id/preworkoutman"
+            android:layout_width="158dp"
+            android:layout_height="209dp"
+            app:srcCompat="@drawable/preworkout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="73dp" />
+
 
     </android.support.constraint.ConstraintLayout>
 

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,13 @@ public class PlayActivity extends AppCompatActivity {
     private static final String key_Food = "newFood";
     private static final String Prefs_food = "mySaveGameFileFood";
 
+    //Image to button variables
+    private static ImageView workoutguy;
+    public static Button buttonJump1;
+    private int current_image;
+    int[] images = {R.drawable.preworkout, R.drawable.duringworkout,
+            R.drawable.duringworkout2, R.drawable.postworkout};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +93,8 @@ public class PlayActivity extends AppCompatActivity {
         cash = sharedPref.getInt(cashString, 0);
         one = new Account(cash);
         moneyCount.setText(cashString + ":" + one.getCash());
+
+        buttonClick();
 
         buttonJump.setOnClickListener (new View.OnClickListener() {
             @Override
@@ -129,6 +139,11 @@ public class PlayActivity extends AppCompatActivity {
             LoadInt();
             LoadSleep();
             LoadIntFood();
+
+            //image animation frames update
+            current_image++;
+            current_image=current_image % images.length;
+            workoutguy.setImageResource(images[current_image]);
         }else{
             Toast.makeText(getApplicationContext(), "You don't have enough energy or sleep to continue! ", Toast.LENGTH_SHORT).show();
         }
@@ -191,4 +206,8 @@ public class PlayActivity extends AppCompatActivity {
         energyBar.setText("Energy: " + String.valueOf(energyAmount));
     }
 
+    public void buttonClick () {
+        workoutguy = (ImageView)findViewById((R.id.preworkoutman));
+        buttonJump1=(Button)findViewById((R.id.buttonJump));
+    }
 }

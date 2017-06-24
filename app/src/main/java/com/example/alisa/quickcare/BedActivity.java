@@ -54,6 +54,7 @@ public class BedActivity extends AppCompatActivity {
     private static final String key_Food = "newFood";
     private static final String Prefs_food = "mySaveGameFileFood";
 
+    //button changing animation frames variables
     private static ImageView sleepingguy;
         public static Button buttonLight;
         private int current_image;
@@ -99,6 +100,8 @@ public class BedActivity extends AppCompatActivity {
                 SaveSleep(key_sleep, sleep);
                 updateSleep();
                 LoadSleep();
+
+                //animation frames update
                 current_image++;
                 current_image=current_image % images.length;
                 sleepingguy.setImageResource(images[current_image]);

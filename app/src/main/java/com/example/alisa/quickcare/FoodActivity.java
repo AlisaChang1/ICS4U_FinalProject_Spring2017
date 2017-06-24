@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -83,6 +84,16 @@ public class FoodActivity extends AppCompatActivity{
     private static final String Prefs_BuyChicken = "mySavedGameFile_BuyChicken";
 
 
+    //Button changing frames animation variables
+    private static ImageView hungryguy;
+    public static Button buttonCake;
+    public static Button buttonCarrots;
+    public static Button buttonRice;
+    public static Button buttonChicken;
+    private int current_image;
+    int[] images = {R.drawable.duringeating, R.drawable.posteating};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,6 +160,7 @@ public class FoodActivity extends AppCompatActivity{
         carrot = new CarrotCounterActivity(carrotCounter);
         carrotNum.setText(buyFoodString_Carrots + ": " + carrot.getCarrotCounter());
 
+        buttonClick();
 
         buttonFood1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +172,11 @@ public class FoodActivity extends AppCompatActivity{
                 //updateFoodAmount();
                 LoadIntFood();
                 LoadChicken();
+
+                //animation frames update
+                current_image++;
+                current_image=current_image % images.length;
+                hungryguy.setImageResource(images[current_image]);
             }
         });
 
@@ -173,6 +190,11 @@ public class FoodActivity extends AppCompatActivity{
                 //updateFoodAmount();
                 LoadIntFood();
                 LoadCarrot();
+
+                //animation frames update
+                current_image++;
+                current_image=current_image % images.length;
+                hungryguy.setImageResource(images[current_image]);
             }
         });
 
@@ -186,6 +208,11 @@ public class FoodActivity extends AppCompatActivity{
                 //updateFoodAmount();
                 LoadIntFood();
                 LoadRice();
+
+                //animation frames update
+                current_image++;
+                current_image=current_image % images.length;
+                hungryguy.setImageResource(images[current_image]);
             }
         });
 
@@ -199,6 +226,11 @@ public class FoodActivity extends AppCompatActivity{
                 //updateFoodAmount();
                 LoadIntFood();
                 LoadCake();
+
+                //animation frames update
+                current_image++;
+                current_image=current_image % images.length;
+                hungryguy.setImageResource(images[current_image]);
             }
         });
 
@@ -346,4 +378,11 @@ public class FoodActivity extends AppCompatActivity{
         }
     }
 
+    public void buttonClick () {
+        hungryguy = (ImageView)findViewById((R.id.imageView10));
+        buttonCake=(Button)findViewById((R.id.buttonFood4));
+        buttonCarrots=(Button)findViewById((R.id.buttonFood2));
+        buttonChicken=(Button)findViewById((R.id.buttonFood1));
+        buttonRice=(Button)findViewById((R.id.buttonFood3));
+    }
 }
