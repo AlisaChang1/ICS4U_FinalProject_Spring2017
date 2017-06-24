@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,11 @@ public class GameActivity extends AppCompatActivity{
     private SharedPreferences sharedPref_Food;
     private static final String Prefs_food = "mySaveGameFileFood";
 
+    //Button changing frames animation variables
+    public static ImageView poorguy;
+    public int current_image;
+    private int next_image;
+    int[] images = {R.drawable.poorman, R.drawable.duringworkout2, R.drawable.postworkout};
 
 
     @Override
@@ -79,6 +85,9 @@ public class GameActivity extends AppCompatActivity{
         rest = new SleepBarActivity(sleep);
         textSleep.setText(sleepString + ": " + rest.getSleep());
 
+        //change frame image
+        poorguy = (ImageView)findViewById((R.id.mainpoorman));
+        changeImage();
 
         // need to convert the widget string to an int, than add the ints than convert them both back to an int
 
@@ -125,6 +134,20 @@ public class GameActivity extends AppCompatActivity{
         Intent intent = new Intent(this, BedActivity.class);
         startActivity(intent);
 
+    }
+
+    private void changeImage (){
+        if (energyAmount > 80 && sleep > 80) {
+            current_image = current_image + 2;
+            current_image = current_image % images.length;
+            poorguy.setImageResource(images[current_image]);
+        } else if (energyAmount > 50 && sleep > 50) {
+            current_image = current_image + 1;
+            current_image = current_image % images.length;
+            poorguy.setImageResource(images[current_image]);
+        } else {
+            current_image = R.drawable.poorman;
+        }
     }
 
 }

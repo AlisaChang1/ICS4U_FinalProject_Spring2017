@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -53,6 +54,11 @@ public class BedActivity extends AppCompatActivity {
     private static final String key_Food = "newFood";
     private static final String Prefs_food = "mySaveGameFileFood";
 
+    //button changing animation frames variables
+    private static ImageView sleepingguy;
+    public static Button buttonLight;
+    private int current_image;
+    int[] images = {R.drawable.armsdown, R.drawable.sleeping};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +91,8 @@ public class BedActivity extends AppCompatActivity {
         rest = new SleepBarActivity(sleep);
         textSleep.setText(sleepString + ": " + rest.getSleep());
 
+        buttonClick();
+
         buttonLights.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +100,15 @@ public class BedActivity extends AppCompatActivity {
                 SaveSleep(key_sleep, sleep);
                 updateSleep();
                 LoadSleep();
+
+                //animation frames update
+//                if (rest.getSleep() < 50) {
+                current_image++;
+                current_image = current_image % images.length;
+                sleepingguy.setImageResource(images[current_image]);
+//                } else if (rest.getSleep() >= 50){
+//                    current_image = R.drawable.armsdown;
+//                }
             }
         });
 
@@ -141,5 +158,10 @@ public class BedActivity extends AppCompatActivity {
         sleep = sharedPref_sleep.getInt(key_sleep, 0);
         textSleep.setText("Sleep: " + String.valueOf(sleep));
         editor_sleep.apply();
+    }
+
+    public void buttonClick () {
+        sleepingguy = (ImageView)findViewById((R.id.armnsdownman));
+        buttonLight=(Button)findViewById((R.id.buttonLights));
     }
 }
