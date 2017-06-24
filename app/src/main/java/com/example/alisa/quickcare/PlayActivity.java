@@ -28,6 +28,7 @@ public class PlayActivity extends AppCompatActivity {
     TextView textSleep;
     TextView energyBar;
 
+
     //Classes Variables
     SleepBarActivity rest;
     Account one;
@@ -86,12 +87,6 @@ public class PlayActivity extends AppCompatActivity {
         one = new Account(cash);
         moneyCount.setText(cashString + ":" + one.getCash());
 
-        buttonJump.setOnClickListener (new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                workOut();
-            }
-        });
 
         buttonBack2.setOnClickListener (new View.OnClickListener() {
             @Override
