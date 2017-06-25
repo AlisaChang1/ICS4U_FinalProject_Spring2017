@@ -245,14 +245,16 @@ public class PlayActivity extends AppCompatActivity {
 
 
     /**
-     *Subtract methods essentially subtract the energy and sleep amount when called.
+     *Subtract methods essentially subtract the energy when called.
      */
     public void subtractEnergy(){
         if(energyAmount >= 0){
             energyAmount -= 4;
         }
     }
-
+    /**
+     *Subtract methods essentially subtract the sleep amount when called.
+     */
     public void subtractSleep(){
         if(sleep >= 2){
             sleep -= 2;
