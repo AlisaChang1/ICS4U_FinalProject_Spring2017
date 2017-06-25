@@ -279,6 +279,9 @@ public class BuyFoodActivity extends AppCompatActivity{
         editor.apply();
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveRice(String key, int value){
         sharedPref_BuyFoodRice = getSharedPreferences(Prefs_BuyRice, MODE_PRIVATE);
         editor_buyRice = sharedPref_BuyFoodRice.edit();
@@ -286,6 +289,9 @@ public class BuyFoodActivity extends AppCompatActivity{
         editor_buyRice.apply();
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveCarrot(String key, int value){
         sharedPref_BuyFoodCarrot = getSharedPreferences(Prefs_BuyCarrot, MODE_PRIVATE);
         editor_buyCarrot = sharedPref_BuyFoodCarrot.edit();
@@ -293,6 +299,9 @@ public class BuyFoodActivity extends AppCompatActivity{
         editor_buyCarrot.apply();
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveChicken(String key, int value){
         sharedPref_BuyFoodChicken = getSharedPreferences(Prefs_BuyChicken, MODE_PRIVATE);
         editor_buyChicken = sharedPref_BuyFoodChicken.edit();
@@ -300,6 +309,9 @@ public class BuyFoodActivity extends AppCompatActivity{
         editor_buyChicken.apply();
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveCake(String key, int value){
         sharedPref_BuyFoodCake = getSharedPreferences(Prefs_BuyCake, MODE_PRIVATE);
         editor_buyCake = sharedPref_BuyFoodCake.edit();
@@ -317,24 +329,36 @@ public class BuyFoodActivity extends AppCompatActivity{
         editor.apply();
     }
 
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void LoadRice(){
         SharedPreferences sharedPref_BuyFoodRice = getSharedPreferences(Prefs_BuyRice, MODE_PRIVATE);
         riceCounter = sharedPref_BuyFoodRice.getInt(key_Rice, 0);
         editor_buyRice.apply();
     }
 
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void LoadCarrot(){
         SharedPreferences sharedPref_BuyFoodCarrot = getSharedPreferences(Prefs_BuyCarrot, MODE_PRIVATE);
         carrotCounter = sharedPref_BuyFoodCarrot.getInt(key_Carrot, 0);
         editor_buyCarrot.apply();
     }
 
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void LoadChicken(){
         SharedPreferences sharedPref_BuyFoodChicken = getSharedPreferences(Prefs_BuyChicken, MODE_PRIVATE);
         chickenCounter = sharedPref_BuyFoodChicken.getInt(key_Chicken, 0);
         editor_buyChicken.apply();
     }
 
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void LoadCake(){
         SharedPreferences sharedPref_BuyFoodCake = getSharedPreferences(Prefs_BuyCake, MODE_PRIVATE);
         cakeCounter = sharedPref_BuyFoodCake.getInt(key_Cake, 0);

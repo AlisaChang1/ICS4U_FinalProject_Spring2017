@@ -276,6 +276,9 @@ public class FoodActivity extends AppCompatActivity{
         editor.apply();
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void LoadIntFood(){
         SharedPreferences sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
         energyAmount = sharedPref_Food.getInt(key_Food, 0);
@@ -283,6 +286,9 @@ public class FoodActivity extends AppCompatActivity{
         editor.apply();
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveRice(String key, int value){
         sharedPref_BuyFoodRice = getSharedPreferences(Prefs_BuyRice, MODE_PRIVATE);
         editor_buyRice = sharedPref_BuyFoodRice.edit();
@@ -290,6 +296,9 @@ public class FoodActivity extends AppCompatActivity{
         editor_buyRice.apply();
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveCarrot(String key, int value){
         sharedPref_BuyFoodCarrot = getSharedPreferences(Prefs_BuyCarrot, MODE_PRIVATE);
         editor_buyCarrot = sharedPref_BuyFoodCarrot.edit();
@@ -297,6 +306,9 @@ public class FoodActivity extends AppCompatActivity{
         editor_buyCarrot.apply();
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveChicken(String key, int value){
         sharedPref_BuyFoodChicken = getSharedPreferences(Prefs_BuyChicken, MODE_PRIVATE);
         editor_buyChicken = sharedPref_BuyFoodChicken.edit();
@@ -304,6 +316,9 @@ public class FoodActivity extends AppCompatActivity{
         editor_buyChicken.apply();
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveCake(String key, int value){
         sharedPref_BuyFoodCake = getSharedPreferences(Prefs_BuyCake, MODE_PRIVATE);
         editor_buyCake = sharedPref_BuyFoodCake.edit();
@@ -321,6 +336,9 @@ public class FoodActivity extends AppCompatActivity{
         editor_buyRice.apply();
     }
 
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void LoadCarrot(){
         SharedPreferences sharedPref_BuyFoodCarrot = getSharedPreferences(Prefs_BuyCarrot, MODE_PRIVATE);
         carrotCounter = sharedPref_BuyFoodCarrot.getInt(key_Carrot, 0);
@@ -328,6 +346,9 @@ public class FoodActivity extends AppCompatActivity{
         editor_buyCarrot.apply();
     }
 
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void LoadChicken(){
         SharedPreferences sharedPref_BuyFoodChicken = getSharedPreferences(Prefs_BuyChicken, MODE_PRIVATE);
         chickenCounter = sharedPref_BuyFoodChicken.getInt(key_Chicken, 0);
@@ -335,6 +356,9 @@ public class FoodActivity extends AppCompatActivity{
         editor_buyChicken.apply();
     }
 
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void LoadCake(){
         SharedPreferences sharedPref_BuyFoodCake = getSharedPreferences(Prefs_BuyCake, MODE_PRIVATE);
         cakeCounter = sharedPref_BuyFoodCake.getInt(key_Cake, 0);
@@ -342,6 +366,9 @@ public class FoodActivity extends AppCompatActivity{
         editor_buyCake.apply();
     }
 
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void setEnergyCake() {
         if (energyAmount <= 95 && cakeCounter > 0) {
             cakeCounter--;
@@ -351,6 +378,9 @@ public class FoodActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     *setEnergyCarrots method increases the energy amount by 10 every time it is called
+     */
     public void setEnergyCarrots() {
         if (energyAmount <= 90 && carrotCounter > 0) {
             carrotCounter--;
@@ -360,6 +390,9 @@ public class FoodActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     *setEnergyRice method increases the energy amount by 20 every time it is called
+     */
     public void setEnergyRice() {
         if (energyAmount <= 80 && riceCounter > 0) {
             riceCounter--;
@@ -369,6 +402,9 @@ public class FoodActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     *setEnergyRice method increases the energy amount by 50 every time it is called
+     */
     public void setEnergyChicken() {
         if (energyAmount <= 50 && chickenCounter > 0) {
             chickenCounter--;

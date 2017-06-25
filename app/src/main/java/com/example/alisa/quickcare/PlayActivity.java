@@ -192,6 +192,9 @@ public class PlayActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveSleep(String key_sleep, int value){
         sharedPref_sleep = getSharedPreferences(Prefs_sleep, MODE_PRIVATE);
         editor_sleep = sharedPref_sleep.edit();
@@ -199,6 +202,9 @@ public class PlayActivity extends AppCompatActivity {
         editor_sleep.apply();
     }
 
+    /**
+     *Save methods essentially save the variables that they are related to.
+     */
     public void SaveIntFood(String key_Food, int value){
         sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
         editor_Energy = sharedPref_Food.edit();
@@ -217,6 +223,9 @@ public class PlayActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void LoadSleep(){
         SharedPreferences sharedPref_sleep = getSharedPreferences(Prefs_sleep, MODE_PRIVATE);
         sleep = sharedPref_sleep.getInt(key_sleep, 0);
@@ -224,7 +233,9 @@ public class PlayActivity extends AppCompatActivity {
         editor_sleep.apply();
     }
 
-
+    /**
+     *Load Methods load the variables that have been saved by the Save methods
+     */
     public void LoadIntFood(){
         SharedPreferences sharedPref_Food = getSharedPreferences(Prefs_food, MODE_PRIVATE);
         energyAmount = sharedPref_Food.getInt(key_Food, 0);
